@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Cargo.Util.CommonControls.Interfaces
+namespace TeamManagementApp.Util.CommonControls.Interfaces
 {
     public interface ICommonComboBox<T, U>
     {

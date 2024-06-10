@@ -1,9 +1,9 @@
-﻿using WinFormsApp1.Services;
-using WinFormsApp1.Utils;
-using WinFormsApp1.Models;
+﻿using TeamManagementApp.Services;
+using TeamManagementApp.Utils;
+using TeamManagementApp.Models;
 using Refit;
 
-namespace WinFormsApp1.Views.Login
+namespace TeamManagementApp.Views.Login
 {
     public class LoginPresenter(ILoginService loginService, ICurrentUserService currentUserService)
     {

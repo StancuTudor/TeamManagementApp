@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.Utils
+namespace TeamManagementApp.Utils
 {
     internal static class Extensions
     {

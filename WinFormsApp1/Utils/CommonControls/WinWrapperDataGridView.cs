@@ -1,7 +1,7 @@
-﻿using Cargo.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Util.CommonControls.Interfaces;
 using System.ComponentModel;
 
-namespace Cargo.Util.CommonControls
+namespace TeamManagementApp.Util.CommonControls
 {
     /// <summary>
     /// Creates a basic wrapper for DataGridView.

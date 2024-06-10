@@ -1,6 +1,6 @@
-﻿using Cargo.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Util.CommonControls.Interfaces;
 
-namespace CargoBill.Utils.CommonControls.Interfaces
+namespace TeamManagementApp.Utils.CommonControls.Interfaces
 {
     public interface ICommonRichTextBox
     {

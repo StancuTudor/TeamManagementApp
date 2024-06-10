@@ -1,7 +1,7 @@
-﻿using Cargo.Util.CommonControls.Interfaces;
-using CargoBill.Utils.CommonControls.Interfaces;
+﻿using TeamManagementApp.Util.CommonControls.Interfaces;
+using TeamManagementApp.Utils.CommonControls.Interfaces;
 
-namespace CargoBill.Utils.CommonControls
+namespace TeamManagementApp.Utils.CommonControls
 {
     public class WinWrapperRichTextBox : ICommonRichTextBox
     {

@@ -1,10 +1,10 @@
-﻿using WinFormsApp1.Services;
-using WinFormsApp1.Views;
+﻿using TeamManagementApp.Services;
+using TeamManagementApp.Views;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WinFormsApp1.Views.Login;
+using TeamManagementApp.Views.Login;
 
-namespace WinFormsApp1
+namespace TeamManagementApp
 {
     internal class ApplicationWorker : BackgroundService
     {

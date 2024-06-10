@@ -1,7 +1,7 @@
 ﻿using Dapper;
-using WinFormsApp1.Models;
+using TeamManagementApp.Models;
 
-namespace WinFormsApp1.Repositories
+namespace TeamManagementApp.Repositories
 {
     public interface ILoginRepository
     {

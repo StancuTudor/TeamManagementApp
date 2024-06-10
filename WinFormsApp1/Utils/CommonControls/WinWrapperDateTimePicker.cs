@@ -1,6 +1,6 @@
-﻿using Cargo.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Util.CommonControls.Interfaces;
 
-namespace Cargo.Util.CommonControls
+namespace TeamManagementApp.Util.CommonControls
 {
     /// <summary>
     /// Creates a basic wrapper for DateTimePicker.

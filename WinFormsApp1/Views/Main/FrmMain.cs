@@ -1,9 +1,9 @@
-using Cargo.Util.CommonControls;
-using Cargo.Util.CommonControls.Interfaces;
-using WinFormsApp1.Views;
-using WinFormsApp1.Views.Main;
+using TeamManagementApp.Util.CommonControls;
+using TeamManagementApp.Util.CommonControls.Interfaces;
+using TeamManagementApp.Views;
+using TeamManagementApp.Views.Main;
 
-namespace WinFormsApp1
+namespace TeamManagementApp
 {
     public partial class FrmMain : BaseView, IMainView
     {

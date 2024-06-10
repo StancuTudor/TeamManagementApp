@@ -8,9 +8,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinFormsApp1.Views.Login;
+using TeamManagementApp.Views.Login;
 
-namespace WinFormsApp1.Views
+namespace TeamManagementApp.Views
 {
     public partial class FrmLogin : BaseView, ILoginView
     {

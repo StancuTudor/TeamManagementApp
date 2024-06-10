@@ -1,4 +1,4 @@
-﻿namespace Cargo.Util.CommonControls
+﻿namespace TeamManagementApp.Util.CommonControls
 {
     public class CommonComboItem
     {

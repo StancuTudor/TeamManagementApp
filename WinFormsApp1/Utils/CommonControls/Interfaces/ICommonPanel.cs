@@ -1,4 +1,4 @@
-﻿namespace Cargo.Util.CommonControls.Interfaces
+﻿namespace TeamManagementApp.Util.CommonControls.Interfaces
 {
     public interface ICommonPanel
     {

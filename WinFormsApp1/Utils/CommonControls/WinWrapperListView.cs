@@ -1,7 +1,7 @@
-﻿using Cargo.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Util.CommonControls.Interfaces;
 using static System.Windows.Forms.ListViewItem;
 
-namespace Cargo.Util.CommonControls
+namespace TeamManagementApp.Util.CommonControls
 {
     /// <summary>
     /// Creates a base wrapper for ListView with few properties.

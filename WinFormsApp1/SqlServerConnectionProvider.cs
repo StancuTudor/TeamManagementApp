@@ -1,9 +1,9 @@
-﻿using WinFormsApp1.Options;
+﻿using TeamManagementApp.Options;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using System.Data;
 
-namespace WinFormsApp1
+namespace TeamManagementApp
 {
     public interface ISqlServerConnectionProvider
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinFormsApp1.Services;
+using TeamManagementApp.Services;
 
-namespace WinFormsApp1.Views.Main
+namespace TeamManagementApp.Views.Main
 {
     public class MainPresenter
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WinFormsApp1.Views;
+using TeamManagementApp.Views;
 
-namespace WinFormsApp1
+namespace TeamManagementApp
 {
     public interface IViewFactory
     {

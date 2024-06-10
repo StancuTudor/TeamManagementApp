@@ -1,6 +1,6 @@
 ﻿using Dapper;
 
-namespace WinFormsApp1.Repositories
+namespace TeamManagementApp.Repositories
 {
     public interface IMainRepository
     {

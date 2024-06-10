@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.Models
+namespace TeamManagementApp.Models
 {
     public class LoginOut
     {

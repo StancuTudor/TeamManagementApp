@@ -3,15 +3,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using WinFormsApp1.Options;
-using WinFormsApp1.Views;
-using WinFormsApp1.Utils;
-using WinFormsApp1.Services;
-using WinFormsApp1.Views.Login;
-using WinFormsApp1.Views.Main;
-using WinFormsApp1.Repositories;
+using TeamManagementApp.Options;
+using TeamManagementApp.Views;
+using TeamManagementApp.Utils;
+using TeamManagementApp.Services;
+using TeamManagementApp.Views.Login;
+using TeamManagementApp.Views.Main;
+using TeamManagementApp.Repositories;
 
-namespace WinFormsApp1
+namespace TeamManagementApp
 {
     internal static class Program
     {

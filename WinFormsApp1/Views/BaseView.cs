@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1.Views
+﻿namespace TeamManagementApp.Views
 {
     public partial class BaseView : Form
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinFormsApp1.Models;
-using WinFormsApp1.Repositories;
+using TeamManagementApp.Models;
+using TeamManagementApp.Repositories;
 
-namespace WinFormsApp1.Services
+namespace TeamManagementApp.Services
 {
     public interface IMainService
     {
