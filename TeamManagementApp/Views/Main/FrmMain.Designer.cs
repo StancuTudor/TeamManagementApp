@@ -45,6 +45,7 @@
             lblAssigneeFilter = new Label();
             txtProjectFilter = new TextBox();
             lblProjectFilter = new Label();
+            mnuProjectTypes = new ToolStripMenuItem();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
@@ -53,7 +54,7 @@
             // StripMainMenu
             // 
             StripMainMenu.ImageScalingSize = new Size(48, 48);
-            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject, mnuMembers });
+            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject, mnuMembers, mnuProjectTypes });
             StripMainMenu.Location = new Point(0, 0);
             StripMainMenu.Name = "StripMainMenu";
             StripMainMenu.ShowItemToolTips = true;
@@ -229,6 +230,17 @@
             lblProjectFilter.TabIndex = 2;
             lblProjectFilter.Text = "Project";
             // 
+            // mnuProjectTypes
+            // 
+            mnuProjectTypes.AutoSize = false;
+            mnuProjectTypes.AutoToolTip = true;
+            mnuProjectTypes.Image = Properties.Resources.question;
+            mnuProjectTypes.Name = "mnuProjectTypes";
+            mnuProjectTypes.Padding = new Padding(0);
+            mnuProjectTypes.Size = new Size(64, 64);
+            mnuProjectTypes.ToolTipText = "Project types";
+            mnuProjectTypes.Click += mnuProjectTypes_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -269,5 +281,6 @@
         private Button btnApplyFilters;
         private Button btnResetFilters;
         private ToolStripMenuItem mnuMembers;
+        private ToolStripMenuItem mnuProjectTypes;
     }
 }

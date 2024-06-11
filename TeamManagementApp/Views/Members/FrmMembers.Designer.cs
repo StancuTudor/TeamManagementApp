@@ -38,7 +38,7 @@
             lblMemberDetails = new Label();
             chkActive = new CheckBox();
             gbDetails = new GroupBox();
-            btnApplyFilters = new Button();
+            btnDelete = new Button();
             btnSave = new Button();
             gbDetails.SuspendLayout();
             SuspendLayout();
@@ -146,16 +146,16 @@
             gbDetails.TabStop = false;
             gbDetails.Text = "Details";
             // 
-            // btnApplyFilters
+            // btnDelete
             // 
-            btnApplyFilters.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnApplyFilters.Location = new Point(83, 179);
-            btnApplyFilters.Name = "btnApplyFilters";
-            btnApplyFilters.Size = new Size(101, 30);
-            btnApplyFilters.TabIndex = 16;
-            btnApplyFilters.Text = "Delete";
-            btnApplyFilters.UseVisualStyleBackColor = true;
-            btnApplyFilters.Click += btnApplyFilters_Click;
+            btnDelete.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(83, 179);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(101, 30);
+            btnDelete.TabIndex = 16;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnSave
             // 
@@ -174,7 +174,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(303, 218);
             Controls.Add(btnSave);
-            Controls.Add(btnApplyFilters);
+            Controls.Add(btnDelete);
             Controls.Add(cmbMember);
             Controls.Add(lblMember);
             Controls.Add(gbDetails);
@@ -201,7 +201,7 @@
         private Label lblMemberDetails;
         private CheckBox chkActive;
         private GroupBox gbDetails;
-        private Button btnApplyFilters;
+        private Button btnDelete;
         private Button btnSave;
     }
 }

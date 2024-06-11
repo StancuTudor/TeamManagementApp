@@ -52,7 +52,7 @@ namespace TeamManagementApp.Views.Members
             Presenter.FillForSelectedMember();
         }
 
-        private async void btnApplyFilters_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             await Presenter.DeleteMember();
         }

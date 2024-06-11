@@ -45,6 +45,7 @@ namespace TeamManagementApp
             builder.Services.AddHostedService<ApplicationWorker>();
             builder.Services.AddSingleton<IViewFactory, ViewFactory>();
             builder.Services.AddTransient<ISqlServerConnectionProvider, SqlServerConnectionProvider>();
+            builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
             builder.Services.AddSingleton<ILoginService, LoginService>();
             builder.Services.AddSingleton<ILoginRepository, LoginRepository>();
@@ -58,11 +59,13 @@ namespace TeamManagementApp
             builder.Services.AddSingleton<IMembersService, MembersService>();
             builder.Services.AddSingleton<IMembersRepository, MembersRepository>();
 
-            builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+            builder.Services.AddSingleton<ITypesService, TypesService>();
+            builder.Services.AddSingleton<ITypesRepository, TypesRepository>();
 
             builder.Services.AddTransient<LoginPresenter>();
             builder.Services.AddTransient<MainPresenter>();
             builder.Services.AddTransient<MembersPresenter>();
+            builder.Services.AddTransient<TypesPresenter>();
 
             RegisterAllViewsAsService(builder.Services);
 
