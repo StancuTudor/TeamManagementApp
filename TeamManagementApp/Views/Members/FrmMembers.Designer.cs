@@ -51,6 +51,7 @@
             cmbMember.Name = "cmbMember";
             cmbMember.Size = new Size(121, 29);
             cmbMember.TabIndex = 7;
+            cmbMember.SelectedIndexChanged += cmbMember_SelectedIndexChanged;
             // 
             // lblMember
             // 
@@ -154,6 +155,7 @@
             btnApplyFilters.TabIndex = 16;
             btnApplyFilters.Text = "Delete";
             btnApplyFilters.UseVisualStyleBackColor = true;
+            btnApplyFilters.Click += btnApplyFilters_Click;
             // 
             // btnSave
             // 
@@ -164,6 +166,7 @@
             btnSave.TabIndex = 17;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // FrmMembers
             // 

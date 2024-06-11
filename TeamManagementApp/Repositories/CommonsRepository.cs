@@ -28,7 +28,7 @@ namespace TeamManagementApp.Repositories
 
         public async Task<List<Member>> GetAllMembers()
         {
-            var query = @"select LiderId as MemberId, NumeLider as Name, Activ as Active, Ramura as Class, UserId from Lideri order by Name";
+            var query = @"select MemberId, Name, Active, ClassId, UserId from Members order by Name";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<Member>(query);
@@ -37,7 +37,7 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<ProjectStatus>> GetAllProjectStatuses()
         {
-            var query = @"select StatusId, Status from StatusuriProiect";
+            var query = @"select StatusId, Status from ProjectStatuses";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<ProjectStatus>(query);
@@ -46,7 +46,7 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<ProjectType>> GetAllProjectTypes()
         {
-            var query = @"select TipId as TypeId, Tip as Type from TipuriProiect";
+            var query = @"select TypeId, Type from ProjectTypes";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<ProjectType>(query);
@@ -64,7 +64,7 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<MemberClass>> GetAllMemberClasses()
         {
-            var query = @"select RamuraId as ClassId, NumeRamura as ClassName from Ramuri";
+            var query = @"select ClassId, ClassName from MemberClasses";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<MemberClass>(query);

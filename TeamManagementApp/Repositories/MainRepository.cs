@@ -18,13 +18,13 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions)
         {
-            var query = @"select p.ProiectId as ProjectId, p.NumeProiect as ProjectName, p.LiderCoordonator as Assignee, 
-                        p.StatusId, p.TipId as TypeId, p.DataStart as StartDate, p.DataFinal as EndDate, 
-                        l.NumeLider as AssigneeName, s.Status, t.Tip as Type
-                        from Proiecte p
-                        left join Lideri l on p.LiderCoordonator = l.LiderId
-                        inner join StatusuriProiect s on p.StatusId = s.StatusId
-                        inner join TipuriProiect t on p.TipId = t.TipId";
+            var query = @"select p.ProjectId, p.ProjectName, p.Assignee, 
+                        p.StatusId, p.TypeId, p.StartDate, p.EndDate, 
+                        m.Name as AssigneeName, s.Status, t.Type
+                        from Projects p
+                        left join Members m on p.Assignee = m.MemberId
+                        inner join ProjectStatuses s on p.StatusId = s.StatusId
+                        inner join ProjectTypes t on p.TypeId = t.TypeId";
             if (conditions.Count > 0)
             {
                 query = $"{query} where {string.Join(" and ", conditions)}"; 

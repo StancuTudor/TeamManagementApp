@@ -38,13 +38,28 @@ namespace TeamManagementApp.Views.Members
             CmbMembers = new WinWrapperComboBox<Member, int>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));
             TxtMemberDetails = new WinWrapperTextBox(txtMemberDetails);
             CmbClass = new WinWrapperComboBox<MemberClass, int>(cmbClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
-            CmbUser = new WinWrapperComboBox<UserLogin, int>(cmbUser, nameof(UserLogin.UserName), nameof(MemberClass.ClassId));
+            CmbUser = new WinWrapperComboBox<UserLogin, int>(cmbUser, nameof(UserLogin.UserName), nameof(UserLogin.UserId));
             ChkActive = new WinWrapperCheckBox(chkActive);
         }
 
         private async void FrmMembers_Load(object sender, EventArgs e)
         {
             await Presenter.FormLoad();
+        }
+
+        private void cmbMember_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Presenter.FillForSelectedMember();
+        }
+
+        private async void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            await Presenter.DeleteMember();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await Presenter.Save();
         }
     }
 }

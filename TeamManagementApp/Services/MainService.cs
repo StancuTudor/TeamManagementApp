@@ -30,10 +30,10 @@ namespace TeamManagementApp.Services
         private List<string> GetProjectFilterConditions(ProjectFilter filter)
         {
             // Replace with the name of your column.
-            string projectNameColumn = "NumeProiect";
-            string assigneeColumn = "LiderCoordonator";
+            string projectNameColumn = "ProjectName";
+            string assigneeColumn = "Assignee";
             string statusColumn = "p.StatusId";
-            string typeColumn = "p.TipId";
+            string typeColumn = "p.TypeId";
 
             List<string> conditions = [];
             if (filter.ProjectSelection == Selection.Specific)

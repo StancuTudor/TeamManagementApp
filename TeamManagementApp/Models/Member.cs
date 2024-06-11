@@ -11,7 +11,7 @@ namespace TeamManagementApp.Models
         public int MemberId { get; set; }
         public string Name { get; set; } = string.Empty;
         public bool Active { get; set; }
-        public int Class { get; set; }
+        public int ClassId { get; set; }
         public int? UserId { get; set; }
     }
 }
