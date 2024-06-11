@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagementApp", "WinFormsApp1\TeamManagementApp.csproj", "{982CD656-4AFD-457B-8D48-1FAFD707109A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagementApp", "TeamManagementApp\TeamManagementApp.csproj", "{982CD656-4AFD-457B-8D48-1FAFD707109A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
