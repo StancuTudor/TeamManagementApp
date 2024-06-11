@@ -19,7 +19,9 @@ namespace TeamManagementApp.Repositories
 
         public async Task<UserLogin?> GetUserLogin(string user, string password)
         {
-            var query = @"select * from Logins where UserName = @userName and (Password = @password or Password is null)";
+            var query = @"select logins.UserId, UserName, Password, LiderId as MemberId from Logins
+                          left join Lideri on logins.UserId = Lideri.UserId 
+                          where UserName = @userName and (Password = @password or Password is null)";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryFirstOrDefaultAsync<UserLogin>(query, new { userName = user, password = password });

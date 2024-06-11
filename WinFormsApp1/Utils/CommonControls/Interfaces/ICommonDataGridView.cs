@@ -11,6 +11,7 @@ namespace TeamManagementApp.Util.CommonControls.Interfaces
         object this[int colIndex, int rowIndex] { get; set; }
         Task<IList<T>> GetCheckedRowsTags();
         int RowCount { get; set; }
+        void AddColumn(DataGridViewTextBoxColumn column);
     }
 
     public interface ICommonDataGridView<T, U> : ICommonDataGridView<T>

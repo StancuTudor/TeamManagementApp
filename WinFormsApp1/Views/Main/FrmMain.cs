@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
 using TeamManagementApp.Views;
@@ -8,7 +10,11 @@ namespace TeamManagementApp
     public partial class FrmMain : BaseView, IMainView
     {
         #region Properties
-        public ICommonTextBox Text1 { get; set; }
+        public ICommonTextBox TxtProjectFilter { get; set; }
+        public ICommonComboBox<TeamMember, int> CmbAssigneeFilter { get; set; }
+        public ICommonComboBox<ProjectStatus, int> CmbStatusFilter { get; set; }
+        public ICommonComboBox<ProjectType, int> CmbTypeFilter { get; set; }
+        public ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
         #endregion
 
         private readonly List<Form> _openForms = new List<Form>();
@@ -26,9 +32,14 @@ namespace TeamManagementApp
 
         private void InitializeWrappers()
         {
-            // Text1 = new WinWrapperTextBox(textBox1);
+            TxtProjectFilter = new WinWrapperTextBox(txtProjectFilter);
+            CmbAssigneeFilter = new WinWrapperComboBox<TeamMember, int>(cmbAssigneeFilter, nameof(TeamMember.Name), nameof(TeamMember.MemberId));
+            CmbStatusFilter = new WinWrapperComboBox<ProjectStatus, int>(cmbStatusFilter, nameof(ProjectStatus.Status), nameof(ProjectStatus.StatusId));
+            CmbTypeFilter = new WinWrapperComboBox<ProjectType, int>(cmbTypeFilter, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
+            DgvProjects = new WinWrapperDataGridView<DisplayedProject>(dgvProjects);
         }
 
+        #region Opening other forms
         public void CreateOrOpenForm(Form form)
         {
             if (CheckIfFormIsOpen(form, out var formOpen))
@@ -45,7 +56,7 @@ namespace TeamManagementApp
                 newTab.Tag = form;
 
                 _openForms.Add(form);
-                
+
                 form.BringToFront();
 
                 form.FormClosing += Form_FormClosing;
@@ -111,10 +122,31 @@ namespace TeamManagementApp
             var frm = sender as Form;
             _openForms.Remove(frm);
         }
+        #endregion
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void FrmMain_Load(object sender, EventArgs e)
         {
-            await Presenter.Test();
+            await Presenter.FormLoad();
+        }
+
+        private async void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            await Presenter.ApplyFilters();
+        }
+
+        private async void btnAddToList_Click(object sender, EventArgs e)
+        {
+            await Presenter.AddToList();
+        }
+
+        private void btnEmptyList_Click(object sender, EventArgs e)
+        {
+            Presenter.EmptyList();
+        }
+
+        private async void btnResetFilters_Click(object sender, EventArgs e)
+        {
+            await Presenter.ResetFilters();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace TeamManagementApp.Models
         public int UserId { set; get; }
         public string UserName { set; get; } = string.Empty;
         public string Password { set; get; } = string.Empty;
+        public int? MemberId { set; get; }
     }
 }

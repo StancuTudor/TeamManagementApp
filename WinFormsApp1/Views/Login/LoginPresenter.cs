@@ -70,6 +70,7 @@ namespace TeamManagementApp.Views.Login
                     {
                         _currentUserService.UserId = loginOut.UserData.UserLogin.UserId;
                         _currentUserService.UserName = loginOut.UserData.UserLogin.UserName;
+                        _currentUserService.MemberId = loginOut.UserData.UserLogin.MemberId;
                     }
                 }
             }

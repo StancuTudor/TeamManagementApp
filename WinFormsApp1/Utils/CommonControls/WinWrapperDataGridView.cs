@@ -60,6 +60,11 @@ namespace TeamManagementApp.Util.CommonControls
 
         }
         public int RowCount { get => _dataGridView.RowCount; set => _dataGridView.RowCount = value; }
+        public void AddColumn(DataGridViewTextBoxColumn column)
+        {
+            _dataGridView.Columns.Add(column);
+        }
+
         public WinWrapperDataGridView(DataGridView dataGridView)
         {
             _dataGridView = dataGridView;

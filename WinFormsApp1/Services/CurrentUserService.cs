@@ -10,10 +10,12 @@ namespace TeamManagementApp.Services
     { 
         int UserId { get; set; }
         string UserName { get; set; }
+        int? MemberId { get; set; }
     }
     public class CurrentUserService : ICurrentUserService
     {
         public int UserId { get; set; }
         public string UserName { get; set; } = string.Empty;
+        public int? MemberId { get; set; }
     }
 }
