@@ -10,6 +10,7 @@ using TeamManagementApp.Services;
 using TeamManagementApp.Views.Login;
 using TeamManagementApp.Views.Main;
 using TeamManagementApp.Repositories;
+using TeamManagementApp.Views.Members;
 
 namespace TeamManagementApp
 {
@@ -51,10 +52,14 @@ namespace TeamManagementApp
             builder.Services.AddSingleton<IMainService, MainService>();
             builder.Services.AddSingleton<IMainRepository, MainRepository>();
 
+            builder.Services.AddSingleton<IMembersService, MembersService>();
+            builder.Services.AddSingleton<IMembersRepository, MembersRepository>();
+
             builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
             builder.Services.AddTransient<LoginPresenter>();
             builder.Services.AddTransient<MainPresenter>();
+            builder.Services.AddTransient<MembersPresenter>();
 
             RegisterAllViewsAsService(builder.Services);
 

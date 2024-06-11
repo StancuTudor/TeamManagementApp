@@ -23,42 +23,6 @@ namespace TeamManagementApp.Util.CommonControls
         public bool Enabled { get => _dataGridView.Enabled; set => _dataGridView.Enabled = value; }
         public bool Visible { get => _dataGridView.Visible; set => _dataGridView.Visible = value; }
         public object this[int colIndex, int rowIndex] { get => _dataGridView[colIndex, rowIndex].Value; set => _dataGridView[colIndex, rowIndex].Value = value; }
-       /// <summary>
-       /// Used only for datagrids with only one checkbox column
-       /// Alternative for listview checkboxes
-       /// </summary>
-       /// <returns></returns>
-        public async Task<IList<T>> GetCheckedRowsTags()
-        {
-            int i = 0;
-            int index = -1;
-            List<T> tags = new List<T>();
-            foreach (var column in _dataGridView.Columns)
-            {
-                if (column is DataGridViewCheckBoxColumn)
-                {
-                    index = i;
-                    break;
-                }
-                i++;
-            }
-            if (index == -1)
-                return new List<T>();
-            var rows = _dataGridView.Rows;
-            foreach (DataGridViewRow row in rows)
-            {
-                if (row.IsNewRow)
-                    continue;
-                object value = row.Cells[index].Value;
-                if (value != null && (bool)value)
-                {
-                    if (row.Tag != null && row.Tag is T)
-                        tags.Add((T)row.Tag);
-                }
-            }
-            return tags;
-
-        }
         public int RowCount { get => _dataGridView.RowCount; set => _dataGridView.RowCount = value; }
         public void AddColumn(DataGridViewTextBoxColumn column)
         {

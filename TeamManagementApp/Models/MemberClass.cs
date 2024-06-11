@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamManagementApp.Models
 {
-    public class TeamMemberClass
+    public class MemberClass
     {
         public int ClassId {  get; set; }
         public string ClassName { get; set; } = string.Empty;

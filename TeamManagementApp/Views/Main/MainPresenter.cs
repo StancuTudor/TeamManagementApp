@@ -12,7 +12,6 @@ namespace TeamManagementApp.Views.Main
 {
     public class MainPresenter
     {
-
         private IMainView _view;
         private readonly IMainService _mainService;
         private readonly IViewFactory _viewFactory;
@@ -121,14 +120,14 @@ namespace TeamManagementApp.Views.Main
 
         private async Task InitializeAssignees()
         {
-            var teamMembers = new List<TeamMember>
+            var teamMembers = new List<Member>
             {
-                new TeamMember()
+                new Member()
                 {
                     Name = Selection.Any.ToString(),
                     MemberId = (int)Selection.Any
                 },
-                new TeamMember()
+                new Member()
                 {
                     Name = "Unassigned",
                     MemberId = (int)Selection.Null
@@ -136,7 +135,7 @@ namespace TeamManagementApp.Views.Main
             };
             teamMembers.AddRange(await _mainService.GetAllTeamMembers());
 
-            _view.CmbAssigneeFilter.DataSource = new BindingList<TeamMember>(teamMembers);
+            _view.CmbAssigneeFilter.DataSource = new BindingList<Member>(teamMembers);
         }
         
         private async Task InitializeStatuses()

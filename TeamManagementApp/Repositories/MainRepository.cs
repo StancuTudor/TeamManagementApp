@@ -6,7 +6,7 @@ namespace TeamManagementApp.Repositories
 {
     public interface IMainRepository
     {
-        Task<List<TeamMember>> GetAllTeamMembers();
+        Task<List<Member>> GetAllTeamMembers();
         Task<List<ProjectStatus>> GetAllProjectStatuses();
         Task<List<ProjectType>> GetAllProjectTypes();
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions);
@@ -20,12 +20,12 @@ namespace TeamManagementApp.Repositories
             _sqlProvider = sqlProvider;
         }
 
-        public async Task<List<TeamMember>> GetAllTeamMembers()
+        public async Task<List<Member>> GetAllTeamMembers()
         {
             var query = @"select LiderId as MemberId, NumeLider as Name, Activ as Active, Ramura as Class, UserId from Lideri";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
-                var result = await connection.QueryAsync<TeamMember>(query);
+                var result = await connection.QueryAsync<Member>(query);
                 return result.ToList();
             }
         }

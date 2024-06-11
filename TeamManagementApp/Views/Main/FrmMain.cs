@@ -4,6 +4,7 @@ using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
 using TeamManagementApp.Views;
 using TeamManagementApp.Views.Main;
+using TeamManagementApp.Views.Members;
 
 namespace TeamManagementApp
 {
@@ -11,7 +12,7 @@ namespace TeamManagementApp
     {
         #region Properties
         public ICommonTextBox TxtProjectFilter { get; set; }
-        public ICommonComboBox<TeamMember, int> CmbAssigneeFilter { get; set; }
+        public ICommonComboBox<Member, int> CmbAssigneeFilter { get; set; }
         public ICommonComboBox<ProjectStatus, int> CmbStatusFilter { get; set; }
         public ICommonComboBox<ProjectType, int> CmbTypeFilter { get; set; }
         public ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
@@ -33,7 +34,7 @@ namespace TeamManagementApp
         private void InitializeWrappers()
         {
             TxtProjectFilter = new WinWrapperTextBox(txtProjectFilter);
-            CmbAssigneeFilter = new WinWrapperComboBox<TeamMember, int>(cmbAssigneeFilter, nameof(TeamMember.Name), nameof(TeamMember.MemberId));
+            CmbAssigneeFilter = new WinWrapperComboBox<Member, int>(cmbAssigneeFilter, nameof(Member.Name), nameof(Member.MemberId));
             CmbStatusFilter = new WinWrapperComboBox<ProjectStatus, int>(cmbStatusFilter, nameof(ProjectStatus.Status), nameof(ProjectStatus.StatusId));
             CmbTypeFilter = new WinWrapperComboBox<ProjectType, int>(cmbTypeFilter, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
             DgvProjects = new WinWrapperDataGridView<DisplayedProject>(dgvProjects);
@@ -147,6 +148,12 @@ namespace TeamManagementApp
         private async void btnResetFilters_Click(object sender, EventArgs e)
         {
             await Presenter.ResetFilters();
+        }
+
+        private void mnuMembers_Click(object sender, EventArgs e)
+        {
+            var frmMembers = _viewFactory.Create<FrmMembers>();
+            CreateOrOpenForm(frmMembers);
         }
     }
 }

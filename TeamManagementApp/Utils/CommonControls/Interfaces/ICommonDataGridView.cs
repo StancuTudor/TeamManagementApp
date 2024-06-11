@@ -9,7 +9,6 @@ namespace TeamManagementApp.Util.CommonControls.Interfaces
         bool Enabled { get; set; }
         bool Visible { get; set; }
         object this[int colIndex, int rowIndex] { get; set; }
-        Task<IList<T>> GetCheckedRowsTags();
         int RowCount { get; set; }
         void AddColumn(DataGridViewTextBoxColumn column);
     }

@@ -12,7 +12,7 @@ namespace TeamManagementApp.Services
 {
     public interface IMainService
     {
-        Task<List<TeamMember>> GetAllTeamMembers();
+        Task<List<Member>> GetAllTeamMembers();
         Task<List<ProjectStatus>> GetAllProjectStatuses();
         Task<List<ProjectType>> GetAllProjectTypes();
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter);
@@ -26,7 +26,7 @@ namespace TeamManagementApp.Services
             _mainRepository = mainRepository;
         }
 
-        public async Task<List<TeamMember>> GetAllTeamMembers()
+        public async Task<List<Member>> GetAllTeamMembers()
         {
             return await _mainRepository.GetAllTeamMembers();
         }

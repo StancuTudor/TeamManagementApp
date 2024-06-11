@@ -30,6 +30,7 @@
         {
             StripMainMenu = new MenuStrip();
             mnuAddProject = new ToolStripMenuItem();
+            mnuMembers = new ToolStripMenuItem();
             dgvProjects = new DataGridView();
             pnlProjects = new Panel();
             btnResetFilters = new Button();
@@ -52,7 +53,7 @@
             // StripMainMenu
             // 
             StripMainMenu.ImageScalingSize = new Size(48, 48);
-            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject });
+            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject, mnuMembers });
             StripMainMenu.Location = new Point(0, 0);
             StripMainMenu.Name = "StripMainMenu";
             StripMainMenu.ShowItemToolTips = true;
@@ -69,6 +70,17 @@
             mnuAddProject.Padding = new Padding(0);
             mnuAddProject.Size = new Size(64, 64);
             mnuAddProject.ToolTipText = "Add project";
+            // 
+            // mnuMembers
+            // 
+            mnuMembers.AutoSize = false;
+            mnuMembers.AutoToolTip = true;
+            mnuMembers.Image = Properties.Resources.question;
+            mnuMembers.Name = "mnuMembers";
+            mnuMembers.Padding = new Padding(0);
+            mnuMembers.Size = new Size(64, 64);
+            mnuMembers.ToolTipText = "Members";
+            mnuMembers.Click += mnuMembers_Click;
             // 
             // dgvProjects
             // 
@@ -224,6 +236,8 @@
             ClientSize = new Size(1008, 729);
             Controls.Add(StripMainMenu);
             Controls.Add(pnlProjects);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             Name = "FrmMain";
             Text = "Projects";
             Load += FrmMain_Load;
@@ -254,5 +268,6 @@
         private Button btnAddToList;
         private Button btnApplyFilters;
         private Button btnResetFilters;
+        private ToolStripMenuItem mnuMembers;
     }
 }
