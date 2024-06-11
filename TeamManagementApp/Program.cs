@@ -49,6 +49,9 @@ namespace TeamManagementApp
             builder.Services.AddSingleton<ILoginService, LoginService>();
             builder.Services.AddSingleton<ILoginRepository, LoginRepository>();
 
+            builder.Services.AddSingleton<ICommonService, CommonService>();
+            builder.Services.AddSingleton<ICommonRepository, CommonRepository>();
+
             builder.Services.AddSingleton<IMainService, MainService>();
             builder.Services.AddSingleton<IMainRepository, MainRepository>();
 

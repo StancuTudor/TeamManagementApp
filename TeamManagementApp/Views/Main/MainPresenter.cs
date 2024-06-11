@@ -13,13 +13,15 @@ namespace TeamManagementApp.Views.Main
     public class MainPresenter
     {
         private IMainView _view;
+        private readonly ICommonService _commonService;
         private readonly IMainService _mainService;
         private readonly IViewFactory _viewFactory;
         private readonly ICurrentUserService _currentUserService;
         private BindingList<DisplayedProject> _sourceDgvProjects;
 
-        public MainPresenter(IMainService mainService, IViewFactory viewFactory, ICurrentUserService currentUserService)
+        public MainPresenter(ICommonService commonService, IMainService mainService, IViewFactory viewFactory, ICurrentUserService currentUserService)
         {
+            _commonService = commonService;
             _mainService = mainService;
             _viewFactory = viewFactory;
             _currentUserService = currentUserService;
@@ -108,7 +110,7 @@ namespace TeamManagementApp.Views.Main
                 AssigneeSelection = Selection.Specific,
                 Assignees = [_currentUserService.MemberId.Value],
                 StatusSelection = Selection.Specific,
-                Statuses = [0,1,2]
+                Statuses = [0,1,2] // Not started, In works, In progress
             };
 
             var filteredProjects = await _mainService.GetFilteredProjects(filter);
@@ -120,22 +122,22 @@ namespace TeamManagementApp.Views.Main
 
         private async Task InitializeAssignees()
         {
-            var teamMembers = new List<Member>
+            var members = new List<Member>
             {
                 new Member()
                 {
-                    Name = Selection.Any.ToString(),
+                    Name = $"({Selection.Any.ToString()})",
                     MemberId = (int)Selection.Any
                 },
                 new Member()
                 {
-                    Name = "Unassigned",
+                    Name = "(Unassigned)",
                     MemberId = (int)Selection.Null
                 }
             };
-            teamMembers.AddRange(await _mainService.GetAllTeamMembers());
+            members.AddRange(await _commonService.GetAllMembers());
 
-            _view.CmbAssigneeFilter.DataSource = new BindingList<Member>(teamMembers);
+            _view.CmbAssigneeFilter.DataSource = new BindingList<Member>(members);
         }
         
         private async Task InitializeStatuses()
@@ -144,11 +146,11 @@ namespace TeamManagementApp.Views.Main
             {
                 new ProjectStatus()
                 {
-                    Status = Selection.Any.ToString(),
+                    Status = $"({Selection.Any.ToString()})",
                     StatusId = (int)Selection.Any
                 }
             };
-            statuses.AddRange(await _mainService.GetAllProjectStatuses());
+            statuses.AddRange(await _commonService.GetAllProjectStatuses());
 
             _view.CmbStatusFilter.DataSource = new BindingList<ProjectStatus>(statuses);
         }
@@ -159,11 +161,11 @@ namespace TeamManagementApp.Views.Main
             {
                 new ProjectType()
                 {
-                    Type = Selection.Any.ToString(),
+                    Type = $"({Selection.Any.ToString()})",
                     TypeId = (int)Selection.Any
                 }
             };
-            types.AddRange(await _mainService.GetAllProjectTypes());
+            types.AddRange(await _commonService.GetAllProjectTypes());
 
             _view.CmbTypeFilter.DataSource = new BindingList<ProjectType>(types);
         }

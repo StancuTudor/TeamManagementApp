@@ -4,6 +4,7 @@ namespace TeamManagementApp.Models.Filters
 {
     public enum Selection
     {
+        New = -3,
         Null = -2,
         Any = -1,
         Specific = 0

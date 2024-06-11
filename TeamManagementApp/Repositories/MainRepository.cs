@@ -6,9 +6,6 @@ namespace TeamManagementApp.Repositories
 {
     public interface IMainRepository
     {
-        Task<List<Member>> GetAllTeamMembers();
-        Task<List<ProjectStatus>> GetAllProjectStatuses();
-        Task<List<ProjectType>> GetAllProjectTypes();
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions);
     }
 
@@ -18,34 +15,6 @@ namespace TeamManagementApp.Repositories
         public MainRepository(ISqlServerConnectionProvider sqlProvider)
         {
             _sqlProvider = sqlProvider;
-        }
-
-        public async Task<List<Member>> GetAllTeamMembers()
-        {
-            var query = @"select LiderId as MemberId, NumeLider as Name, Activ as Active, Ramura as Class, UserId from Lideri";
-            using (var connection = _sqlProvider.GetDbConnectionMain())
-            {
-                var result = await connection.QueryAsync<Member>(query);
-                return result.ToList();
-            }
-        }
-        public async Task<List<ProjectStatus>> GetAllProjectStatuses()
-        {
-            var query = @"select StatusId, Status from StatusuriProiect";
-            using (var connection = _sqlProvider.GetDbConnectionMain())
-            {
-                var result = await connection.QueryAsync<ProjectStatus>(query);
-                return result.ToList();
-            }
-        }
-        public async Task<List<ProjectType>> GetAllProjectTypes()
-        {
-            var query = @"select TipId as TypeId, Tip as Type from TipuriProiect";
-            using (var connection = _sqlProvider.GetDbConnectionMain())
-            {
-                var result = await connection.QueryAsync<ProjectType>(query);
-                return result.ToList();
-            }
         }
         public async Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions)
         {

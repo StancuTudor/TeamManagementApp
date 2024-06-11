@@ -12,9 +12,6 @@ namespace TeamManagementApp.Services
 {
     public interface IMainService
     {
-        Task<List<Member>> GetAllTeamMembers();
-        Task<List<ProjectStatus>> GetAllProjectStatuses();
-        Task<List<ProjectType>> GetAllProjectTypes();
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter);
     }
 
@@ -24,19 +21,6 @@ namespace TeamManagementApp.Services
         public MainService(IMainRepository mainRepository)
         {
             _mainRepository = mainRepository;
-        }
-
-        public async Task<List<Member>> GetAllTeamMembers()
-        {
-            return await _mainRepository.GetAllTeamMembers();
-        }
-        public async Task<List<ProjectStatus>> GetAllProjectStatuses()
-        {
-            return await _mainRepository.GetAllProjectStatuses();
-        }
-        public async Task<List<ProjectType>> GetAllProjectTypes()
-        {
-            return await _mainRepository.GetAllProjectTypes();
         }
         public async Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter)
         {
