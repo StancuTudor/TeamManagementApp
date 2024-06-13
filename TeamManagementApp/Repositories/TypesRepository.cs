@@ -10,7 +10,7 @@ namespace TeamManagementApp.Repositories
 {
     public interface ITypesRepository
     {
-        Task DeleteTypeById(int typeId);
+        Task DeleteTypeById(long typeId);
         Task InsertNewType(ProjectType type);
         Task UpdateType(ProjectType type);
     }
@@ -22,7 +22,7 @@ namespace TeamManagementApp.Repositories
             _sqlProvider = sqlProvider;
         }
 
-        public async Task DeleteTypeById(int typeId)
+        public async Task DeleteTypeById(long typeId)
         {
             var query = @"delete from ProjectTypes where TypeId = @typeId";
             using (var connection = _sqlProvider.GetDbConnectionMain())
@@ -33,7 +33,7 @@ namespace TeamManagementApp.Repositories
 
         public async Task InsertNewType(ProjectType type)
         {
-            var query = @"insert into ProjectTypes (TypeId, Type) values ((select max(TypeId) + 1 from ProjectTypes), @type)";
+            var query = @"insert into ProjectTypes (Type) values (@type)";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 await connection.ExecuteAsync(query, new

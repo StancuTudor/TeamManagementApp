@@ -8,7 +8,7 @@ namespace TeamManagementApp.Models
 {
     public class MemberClass
     {
-        public int ClassId {  get; set; }
+        public long ClassId {  get; set; }
         public string ClassName { get; set; } = string.Empty;
     }
 }

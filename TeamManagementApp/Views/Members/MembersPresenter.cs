@@ -44,7 +44,7 @@ namespace TeamManagementApp.Views.Members
                 new Member()
                 {
                     Name = $"({Selection.New.ToString()})",
-                    MemberId = (int)Selection.New
+                    MemberId = (long)Selection.New
                 }
             };
             members.AddRange(await _commonService.GetAllMembers());
@@ -64,7 +64,7 @@ namespace TeamManagementApp.Views.Members
                 new UserLogin()
                 {
                     UserName = "(No user)",
-                    UserId = (int)Selection.Null
+                    UserId = (long)Selection.Null
                 }
             };
             users.AddRange(await _commonService.GetAllUsers());
@@ -75,7 +75,7 @@ namespace TeamManagementApp.Views.Members
         public void FillForSelectedMember()
         {
             var selectedMember = _view.CmbMembers.SelectedItem;
-            if(selectedMember.MemberId == (int)Selection.New)
+            if(selectedMember.MemberId == (long)Selection.New)
             {
                 FillForNewMember();
             }
@@ -99,9 +99,9 @@ namespace TeamManagementApp.Views.Members
             _view.ChkActive.Checked = selectedMember.Active;
             _view.TxtMemberDetails.Text = selectedMember.Name;
         }
-        private int? GetValueOfUserCheck(int userId)
+        private long? GetValueOfUserCheck(long userId)
         {
-            if (userId == (int)Selection.Null)
+            if (userId == (long)Selection.Null)
                 return null;
             return userId;
         }
@@ -111,7 +111,7 @@ namespace TeamManagementApp.Views.Members
             try
             {
                 var member = _view.CmbMembers.SelectedItem;
-                if (member.MemberId == (int)Selection.New)
+                if (member.MemberId == (long)Selection.New)
                     throw new InvalidOperationException("Invalid operation.");
 
                 var result = MessageBox.Show($"Are you sure you want to delete {member.Name}?", "Validation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -123,7 +123,7 @@ namespace TeamManagementApp.Views.Members
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
         }
-        private async Task DeleteMemberById(int memberId)
+        private async Task DeleteMemberById(long memberId)
         {
             await _membersService.DeleteMemberById(memberId);
             await InitializeMembers();
@@ -134,7 +134,7 @@ namespace TeamManagementApp.Views.Members
         {
             var memberId = _view.CmbMembers.SelectedValue;
             var newMember = GetMemberModelFromControls();
-            if (memberId == (int)Selection.New)
+            if (memberId == (long)Selection.New)
                 await _membersService.InsertNewMember(newMember);
             else
                 await _membersService.UpdateMember(newMember);
@@ -147,11 +147,11 @@ namespace TeamManagementApp.Views.Members
         {
             return new Member()
             {
-                MemberId = _view.CmbMembers.SelectedValue == (int)Selection.New ? 0 : _view.CmbMembers.SelectedValue,
+                MemberId = _view.CmbMembers.SelectedValue == (long)Selection.New ? 0 : _view.CmbMembers.SelectedValue,
                 Name = _view.TxtMemberDetails.Text.Trim(),
                 Active = _view.ChkActive.Checked,
                 ClassId = _view.CmbClass.SelectedValue,
-                UserId = _view.CmbUser.SelectedValue == (int)Selection.Null ? null : _view.CmbUser.SelectedValue,
+                UserId = _view.CmbUser.SelectedValue == (long)Selection.Null ? null : _view.CmbUser.SelectedValue,
             };
         }
     }

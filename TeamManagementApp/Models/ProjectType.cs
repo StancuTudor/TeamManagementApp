@@ -8,7 +8,7 @@ namespace TeamManagementApp.Models
 {
     public class ProjectType
     {
-        public int TypeId { get; set; }
+        public long TypeId { get; set; }
         public string Type { get; set; } = string.Empty;
     }
 }

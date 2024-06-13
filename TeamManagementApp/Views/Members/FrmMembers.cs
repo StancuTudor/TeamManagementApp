@@ -17,10 +17,10 @@ namespace TeamManagementApp.Views.Members
     public partial class FrmMembers : BaseView, IMembersView
     {
         #region Properties
-        public ICommonComboBox<Member, int> CmbMembers { get; set; }
+        public ICommonComboBox<Member, long> CmbMembers { get; set; }
         public ICommonTextBox TxtMemberDetails { get; set; }
-        public ICommonComboBox<MemberClass, int> CmbClass { get; set; }
-        public ICommonComboBox<UserLogin, int> CmbUser { get; set; }
+        public ICommonComboBox<MemberClass, long> CmbClass { get; set; }
+        public ICommonComboBox<UserLogin, long> CmbUser { get; set; }
         public ICommonCheckBox ChkActive { get; set; }
         #endregion
         public MembersPresenter Presenter { get; private set; }
@@ -35,10 +35,10 @@ namespace TeamManagementApp.Views.Members
 
         private void InitializeWrappers()
         {
-            CmbMembers = new WinWrapperComboBox<Member, int>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));
+            CmbMembers = new WinWrapperComboBox<Member, long>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));
             TxtMemberDetails = new WinWrapperTextBox(txtMemberDetails);
-            CmbClass = new WinWrapperComboBox<MemberClass, int>(cmbClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
-            CmbUser = new WinWrapperComboBox<UserLogin, int>(cmbUser, nameof(UserLogin.UserName), nameof(UserLogin.UserId));
+            CmbClass = new WinWrapperComboBox<MemberClass, long>(cmbClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
+            CmbUser = new WinWrapperComboBox<UserLogin, long>(cmbUser, nameof(UserLogin.UserName), nameof(UserLogin.UserId));
             ChkActive = new WinWrapperCheckBox(chkActive);
         }
 

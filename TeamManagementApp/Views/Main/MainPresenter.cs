@@ -110,7 +110,7 @@ namespace TeamManagementApp.Views.Main
                 AssigneeSelection = Selection.Specific,
                 Assignees = [_currentUserService.MemberId.Value],
                 StatusSelection = Selection.Specific,
-                Statuses = [0,1,2] // Not started, In works, In progress
+                Statuses = [977174304448020481, 977174304448086017, 977174304448118785] // Not started, In works, In progress
             };
 
             var filteredProjects = await _mainService.GetFilteredProjects(filter);
@@ -127,12 +127,12 @@ namespace TeamManagementApp.Views.Main
                 new Member()
                 {
                     Name = $"({Selection.Any.ToString()})",
-                    MemberId = (int)Selection.Any
+                    MemberId = (long)Selection.Any
                 },
                 new Member()
                 {
                     Name = "(Unassigned)",
-                    MemberId = (int)Selection.Null
+                    MemberId = (long)Selection.Null
                 }
             };
             members.AddRange(await _commonService.GetAllMembers());
@@ -147,7 +147,7 @@ namespace TeamManagementApp.Views.Main
                 new ProjectStatus()
                 {
                     Status = $"({Selection.Any.ToString()})",
-                    StatusId = (int)Selection.Any
+                    StatusId = (long)Selection.Any
                 }
             };
             statuses.AddRange(await _commonService.GetAllProjectStatuses());
@@ -162,7 +162,7 @@ namespace TeamManagementApp.Views.Main
                 new ProjectType()
                 {
                     Type = $"({Selection.Any.ToString()})",
-                    TypeId = (int)Selection.Any
+                    TypeId = (long)Selection.Any
                 }
             };
             types.AddRange(await _commonService.GetAllProjectTypes());
@@ -185,20 +185,20 @@ namespace TeamManagementApp.Views.Main
 
             var assigneeSelection = _view.CmbAssigneeFilter.SelectedValue switch
             {
-                (int)Selection.Any => Selection.Any,
-                (int)Selection.Null => Selection.Null,
+                (long)Selection.Any => Selection.Any,
+                (long)Selection.Null => Selection.Null,
                 _ => Selection.Specific,
             };
 
             var statusSelection = _view.CmbStatusFilter.SelectedValue switch
             {
-                (int)Selection.Any => Selection.Any,
+                (long)Selection.Any => Selection.Any,
                 _ => Selection.Specific,
             };
 
             var typeSelection = _view.CmbTypeFilter.SelectedValue switch
             {
-                (int)Selection.Any => Selection.Any,
+                (long)Selection.Any => Selection.Any,
                 _ => Selection.Specific,
             };
 

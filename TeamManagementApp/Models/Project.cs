@@ -12,11 +12,11 @@ namespace TeamManagementApp.Models
     /// </summary>
     public class Project
     {
-        public int ProjectId { get; set; }
+        public long ProjectId { get; set; }
         public string ProjectName { get; set; } = string.Empty;
-        public int? Assignee { get; set; }
-        public int StatusId { get; set; }
-        public int TypeId { get; set; }
+        public long? Assignee { get; set; }
+        public long StatusId { get; set; }
+        public long TypeId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }
@@ -37,7 +37,7 @@ namespace TeamManagementApp.Models
     public class DisplayedProject
     {
         [Browsable(false)]
-        public int ProjectId { get; set; }
+        public long ProjectId { get; set; }
         public string Project { get; set; } = string.Empty;
         public string? Assignee { get; set; }
         public string Status { get; set; } = string.Empty;

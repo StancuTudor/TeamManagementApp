@@ -8,9 +8,9 @@ namespace TeamManagementApp.Models
 {
     public class UserLogin
     {
-        public int UserId { set; get; }
+        public long UserId { set; get; }
         public string UserName { set; get; } = string.Empty;
         public string Password { set; get; } = string.Empty;
-        public int? MemberId { set; get; }
+        public long? MemberId { set; get; }
     }
 }

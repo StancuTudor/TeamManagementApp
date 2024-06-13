@@ -17,7 +17,7 @@ namespace TeamManagementApp.Views.Members
     public partial class FrmTypes : BaseView, ITypesView
     {
         #region Properties
-        public ICommonComboBox<ProjectType, int> CmbTypes { get; set; }
+        public ICommonComboBox<ProjectType, long> CmbTypes { get; set; }
         public ICommonTextBox TxtTypeDetails { get; set; }
         #endregion
         public TypesPresenter Presenter { get; private set; }
@@ -32,7 +32,7 @@ namespace TeamManagementApp.Views.Members
 
         private void InitializeWrappers()
         {
-            CmbTypes = new WinWrapperComboBox<ProjectType, int>(cmbType, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
+            CmbTypes = new WinWrapperComboBox<ProjectType, long>(cmbType, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
             TxtTypeDetails = new WinWrapperTextBox(txtTypeDetails);
         }
 

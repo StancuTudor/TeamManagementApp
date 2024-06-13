@@ -11,9 +11,9 @@ namespace TeamManagementApp.Views.Main
     public interface IMainView
     {
         ICommonTextBox TxtProjectFilter { get; set; }
-        ICommonComboBox<Member, int> CmbAssigneeFilter { get; set; }
-        ICommonComboBox<ProjectStatus, int> CmbStatusFilter { get; set; }
-        ICommonComboBox<ProjectType, int> CmbTypeFilter { get; set; }
+        ICommonComboBox<Member, long> CmbAssigneeFilter { get; set; }
+        ICommonComboBox<ProjectStatus, long> CmbStatusFilter { get; set; }
+        ICommonComboBox<ProjectType, long> CmbTypeFilter { get; set; }
         ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
     }
 }

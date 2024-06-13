@@ -8,14 +8,14 @@ namespace TeamManagementApp.Services
 {
     public interface ICurrentUserService 
     { 
-        int UserId { get; set; }
+        long UserId { get; set; }
         string UserName { get; set; }
-        int? MemberId { get; set; }
+        long? MemberId { get; set; }
     }
     public class CurrentUserService : ICurrentUserService
     {
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         public string UserName { get; set; } = string.Empty;
-        public int? MemberId { get; set; }
+        public long? MemberId { get; set; }
     }
 }

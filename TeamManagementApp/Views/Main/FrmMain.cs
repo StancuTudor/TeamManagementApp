@@ -12,9 +12,9 @@ namespace TeamManagementApp
     {
         #region Properties
         public ICommonTextBox TxtProjectFilter { get; set; }
-        public ICommonComboBox<Member, int> CmbAssigneeFilter { get; set; }
-        public ICommonComboBox<ProjectStatus, int> CmbStatusFilter { get; set; }
-        public ICommonComboBox<ProjectType, int> CmbTypeFilter { get; set; }
+        public ICommonComboBox<Member, long> CmbAssigneeFilter { get; set; }
+        public ICommonComboBox<ProjectStatus, long> CmbStatusFilter { get; set; }
+        public ICommonComboBox<ProjectType, long> CmbTypeFilter { get; set; }
         public ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
         #endregion
 
@@ -34,9 +34,9 @@ namespace TeamManagementApp
         private void InitializeWrappers()
         {
             TxtProjectFilter = new WinWrapperTextBox(txtProjectFilter);
-            CmbAssigneeFilter = new WinWrapperComboBox<Member, int>(cmbAssigneeFilter, nameof(Member.Name), nameof(Member.MemberId));
-            CmbStatusFilter = new WinWrapperComboBox<ProjectStatus, int>(cmbStatusFilter, nameof(ProjectStatus.Status), nameof(ProjectStatus.StatusId));
-            CmbTypeFilter = new WinWrapperComboBox<ProjectType, int>(cmbTypeFilter, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
+            CmbAssigneeFilter = new WinWrapperComboBox<Member, long>(cmbAssigneeFilter, nameof(Member.Name), nameof(Member.MemberId));
+            CmbStatusFilter = new WinWrapperComboBox<ProjectStatus, long>(cmbStatusFilter, nameof(ProjectStatus.Status), nameof(ProjectStatus.StatusId));
+            CmbTypeFilter = new WinWrapperComboBox<ProjectType, long>(cmbTypeFilter, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
             DgvProjects = new WinWrapperDataGridView<DisplayedProject>(dgvProjects);
         }
 

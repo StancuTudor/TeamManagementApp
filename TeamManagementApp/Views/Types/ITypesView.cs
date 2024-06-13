@@ -10,7 +10,7 @@ namespace TeamManagementApp.Views.Members
 {
     public interface ITypesView
     {
-        ICommonComboBox<ProjectType, int> CmbTypes { get; set; }
+        ICommonComboBox<ProjectType, long> CmbTypes { get; set; }
         ICommonTextBox TxtTypeDetails { get; set; }
     }
 }

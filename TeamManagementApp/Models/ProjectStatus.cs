@@ -8,7 +8,7 @@ namespace TeamManagementApp.Models
 {
     public class ProjectStatus
     {
-        public int StatusId { get; set; }
+        public long StatusId { get; set; }
         public string Status { get; set; } = string.Empty;
     }
 }

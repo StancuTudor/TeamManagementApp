@@ -10,7 +10,7 @@ namespace TeamManagementApp.Repositories
 {
     public interface IMembersRepository
     {
-        Task DeleteMemberById(int memberId);
+        Task DeleteMemberById(long memberId);
         Task InsertNewMember(Member member);
         Task UpdateMember(Member member);
     }
@@ -22,7 +22,7 @@ namespace TeamManagementApp.Repositories
             _sqlProvider = sqlProvider;
         }
 
-        public async Task DeleteMemberById(int memberId)
+        public async Task DeleteMemberById(long memberId)
         {
             var query = @"delete from Members where MemberId = @memberId";
             using (var connection = _sqlProvider.GetDbConnectionMain())

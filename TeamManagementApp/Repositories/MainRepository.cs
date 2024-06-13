@@ -34,9 +34,9 @@ namespace TeamManagementApp.Repositories
                 var result = await connection.QueryAsync<DetailedProject>(query, new
                 {
                     project = $"%{filter.Project}%",
-                    assignees = filter.Assignees,
-                    statuses = filter.Statuses,
-                    types = filter.Types
+                    //assignees = filter.Assignees,
+                    //statuses = filter.Statuses,
+                    //types = filter.Types
                 });
                 return result.ToList();
             }

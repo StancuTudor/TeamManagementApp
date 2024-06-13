@@ -6,7 +6,7 @@ namespace TeamManagementApp.Repositories
     public interface ILoginRepository
     {
         Task<UserLogin?> GetUserLogin(string user, string password);
-        Task UpdateUserPassword(int userId, string password);
+        Task UpdateUserPassword(long userId, string password);
     }
 
     public class LoginRepository : ILoginRepository
@@ -29,7 +29,7 @@ namespace TeamManagementApp.Repositories
             }
         }
 
-        public async Task UpdateUserPassword(int userId, string password)
+        public async Task UpdateUserPassword(long userId, string password)
         {
             var query = @"update Logins set Password = @password where userId = @userId and password is null";
             using (var connection = _sqlProvider.GetDbConnectionMain())

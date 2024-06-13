@@ -11,7 +11,7 @@ namespace TeamManagementApp.Services
 {
     public interface IMembersService
     {
-        Task DeleteMemberById(int memberId);
+        Task DeleteMemberById(long memberId);
         Task InsertNewMember(Member member);
         Task UpdateMember(Member member);
     }
@@ -23,13 +23,13 @@ namespace TeamManagementApp.Services
             _membersRepository = membersRepository;
         }
 
-        public async Task DeleteMemberById(int memberId)
+        public async Task DeleteMemberById(long memberId)
         {
             try
             {
                 await _membersRepository.DeleteMemberById(memberId);
             }
-            catch (SqlException ex)
+            catch (Npgsql.PostgresException ex)
             {
                 throw new InvalidOperationException("Can't delete member. It's being used in a project.");
             }

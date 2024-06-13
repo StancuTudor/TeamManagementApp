@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using System.Data;
+using Npgsql;
 
 namespace TeamManagementApp
 {
@@ -21,7 +22,7 @@ namespace TeamManagementApp
 
         public IDbConnection GetDbConnectionMain()
         {
-            return new SqlConnection(_options.DbConnectionMain);
+            return new NpgsqlConnection(_options.DbConnectionMain);
         }
     }
 }

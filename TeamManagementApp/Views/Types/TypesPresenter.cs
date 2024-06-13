@@ -42,7 +42,7 @@ namespace TeamManagementApp.Views.Members
                 new ProjectType()
                 {
                     Type = $"({Selection.New.ToString()})",
-                    TypeId = (int)Selection.New
+                    TypeId = (long)Selection.New
                 }
             };
             types.AddRange(await _commonService.GetAllProjectTypes());
@@ -53,7 +53,7 @@ namespace TeamManagementApp.Views.Members
         public void FillForSelectedType()
         {
             var selectedType = _view.CmbTypes.SelectedItem;
-            if(selectedType.TypeId == (int)Selection.New)
+            if(selectedType.TypeId == (long)Selection.New)
             {
                 FillForNewType();
             }
@@ -76,7 +76,7 @@ namespace TeamManagementApp.Views.Members
             try
             {
                 var type = _view.CmbTypes.SelectedItem;
-                if (type.TypeId == (int)Selection.New)
+                if (type.TypeId == (long)Selection.New)
                     throw new InvalidOperationException("Invalid operation.");
 
                 var result = MessageBox.Show($"Are you sure you want to delete {type.Type}?", "Validation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -88,7 +88,7 @@ namespace TeamManagementApp.Views.Members
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
         }
-        private async Task DeleteTypeById(int memberId)
+        private async Task DeleteTypeById(long memberId)
         {
             await _typesService.DeleteTypeById(memberId);
             await InitializeTypes();
@@ -99,7 +99,7 @@ namespace TeamManagementApp.Views.Members
         {
             var typeId = _view.CmbTypes.SelectedValue;
             var newType = GetMemberModelFromControls();
-            if (typeId == (int)Selection.New)
+            if (typeId == (long)Selection.New)
                 await _typesService.InsertNewType(newType);
             else
                 await _typesService.UpdateType(newType);
@@ -112,7 +112,7 @@ namespace TeamManagementApp.Views.Members
         {
             return new ProjectType()
             {
-                TypeId = _view.CmbTypes.SelectedValue == (int)Selection.New ? 0 : _view.CmbTypes.SelectedValue,
+                TypeId = _view.CmbTypes.SelectedValue == (long)Selection.New ? 0 : _view.CmbTypes.SelectedValue,
                 Type = _view.TxtTypeDetails.Text.Trim()
             };
         }

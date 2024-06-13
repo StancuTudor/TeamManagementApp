@@ -42,7 +42,7 @@ namespace TeamManagementApp.Services
             }
             if (filter.AssigneeSelection == Selection.Specific)
             {
-                conditions.Add($"{assigneeColumn} in @assignees");
+                conditions.Add($"{assigneeColumn} in ({string.Join(",", filter.Assignees)})");
             }
             if (filter.AssigneeSelection == Selection.Null)
             {
@@ -50,11 +50,11 @@ namespace TeamManagementApp.Services
             }
             if (filter.StatusSelection == Selection.Specific)
             {
-                conditions.Add($"{statusColumn} in @statuses");
+                conditions.Add($"{statusColumn} in ({string.Join(",", filter.Statuses)})");
             }
             if (filter.TypeSelection == Selection.Specific)
             {
-                conditions.Add($"{typeColumn} in @types");
+                conditions.Add($"{typeColumn} in ({string.Join(",", filter.Types)})");
             }
             return conditions;
         }
