@@ -150,13 +150,13 @@ namespace TeamManagementApp
             await Presenter.RefreshFilters();
         }
 
-        private void mnuMembers_Click(object sender, EventArgs e)
+        private void mnuConfigMembers_Click(object sender, EventArgs e)
         {
             var frmMembers = _viewFactory.Create<FrmMembers>();
             CreateOrOpenForm(frmMembers);
         }
 
-        private void mnuProjectTypes_Click(object sender, EventArgs e)
+        private void mnuConfigProjectTypes_Click(object sender, EventArgs e)
         {
             var frmTypes = _viewFactory.Create<FrmTypes>();
             CreateOrOpenForm(frmTypes);

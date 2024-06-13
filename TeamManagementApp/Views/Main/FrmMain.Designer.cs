@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             StripMainMenu = new MenuStrip();
             mnuAddProject = new ToolStripMenuItem();
             mnuMembers = new ToolStripMenuItem();
-            mnuProjectTypes = new ToolStripMenuItem();
+            mnuConfigMembers = new ToolStripMenuItem();
+            mnuConfigMemberClasses = new ToolStripMenuItem();
+            mnuProjects = new ToolStripMenuItem();
+            mnuConfigProjectTypes = new ToolStripMenuItem();
+            mnuConfigGeneral = new ToolStripMenuItem();
+            mnuConfigUsers = new ToolStripMenuItem();
             dgvProjects = new DataGridView();
             pnlProjects = new Panel();
             btnRefreshFilters = new Button();
@@ -54,7 +60,7 @@
             // StripMainMenu
             // 
             StripMainMenu.ImageScalingSize = new Size(48, 48);
-            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject, mnuMembers, mnuProjectTypes });
+            StripMainMenu.Items.AddRange(new ToolStripItem[] { mnuAddProject, mnuMembers, mnuProjects, mnuConfigGeneral });
             StripMainMenu.Location = new Point(0, 0);
             StripMainMenu.Name = "StripMainMenu";
             StripMainMenu.ShowItemToolTips = true;
@@ -66,7 +72,7 @@
             // 
             mnuAddProject.AutoSize = false;
             mnuAddProject.AutoToolTip = true;
-            mnuAddProject.Image = Properties.Resources.question;
+            mnuAddProject.Image = Properties.Resources.document;
             mnuAddProject.Name = "mnuAddProject";
             mnuAddProject.Padding = new Padding(0);
             mnuAddProject.Size = new Size(64, 64);
@@ -76,23 +82,57 @@
             // 
             mnuMembers.AutoSize = false;
             mnuMembers.AutoToolTip = true;
-            mnuMembers.Image = Properties.Resources.question;
+            mnuMembers.DropDownItems.AddRange(new ToolStripItem[] { mnuConfigMembers, mnuConfigMemberClasses });
+            mnuMembers.Image = Properties.Resources.user;
             mnuMembers.Name = "mnuMembers";
             mnuMembers.Padding = new Padding(0);
             mnuMembers.Size = new Size(64, 64);
-            mnuMembers.ToolTipText = "Members";
-            mnuMembers.Click += mnuMembers_Click;
             // 
-            // mnuProjectTypes
+            // mnuConfigMembers
             // 
-            mnuProjectTypes.AutoSize = false;
-            mnuProjectTypes.AutoToolTip = true;
-            mnuProjectTypes.Image = Properties.Resources.question;
-            mnuProjectTypes.Name = "mnuProjectTypes";
-            mnuProjectTypes.Padding = new Padding(0);
-            mnuProjectTypes.Size = new Size(64, 64);
-            mnuProjectTypes.ToolTipText = "Project types";
-            mnuProjectTypes.Click += mnuProjectTypes_Click;
+            mnuConfigMembers.Name = "mnuConfigMembers";
+            mnuConfigMembers.Size = new Size(214, 22);
+            mnuConfigMembers.Text = "Configure members";
+            mnuConfigMembers.Click += mnuConfigMembers_Click;
+            // 
+            // mnuConfigMemberClasses
+            // 
+            mnuConfigMemberClasses.Name = "mnuConfigMemberClasses";
+            mnuConfigMemberClasses.Size = new Size(214, 22);
+            mnuConfigMemberClasses.Text = "Configure member classes";
+            // 
+            // mnuProjects
+            // 
+            mnuProjects.AutoSize = false;
+            mnuProjects.AutoToolTip = true;
+            mnuProjects.DropDownItems.AddRange(new ToolStripItem[] { mnuConfigProjectTypes });
+            mnuProjects.Image = Properties.Resources.connection;
+            mnuProjects.Name = "mnuProjects";
+            mnuProjects.Padding = new Padding(0);
+            mnuProjects.Size = new Size(64, 64);
+            // 
+            // mnuConfigProjectTypes
+            // 
+            mnuConfigProjectTypes.Name = "mnuConfigProjectTypes";
+            mnuConfigProjectTypes.Size = new Size(198, 22);
+            mnuConfigProjectTypes.Text = "Configure project types";
+            mnuConfigProjectTypes.Click += mnuConfigProjectTypes_Click;
+            // 
+            // mnuConfigGeneral
+            // 
+            mnuConfigGeneral.AutoSize = false;
+            mnuConfigGeneral.AutoToolTip = true;
+            mnuConfigGeneral.DropDownItems.AddRange(new ToolStripItem[] { mnuConfigUsers });
+            mnuConfigGeneral.Image = Properties.Resources.box;
+            mnuConfigGeneral.Name = "mnuConfigGeneral";
+            mnuConfigGeneral.Padding = new Padding(0);
+            mnuConfigGeneral.Size = new Size(64, 64);
+            // 
+            // mnuConfigUsers
+            // 
+            mnuConfigUsers.Name = "mnuConfigUsers";
+            mnuConfigUsers.Size = new Size(180, 22);
+            mnuConfigUsers.Text = "Configure users";
             // 
             // dgvProjects
             // 
@@ -249,6 +289,7 @@
             Controls.Add(StripMainMenu);
             Controls.Add(pnlProjects);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmMain";
             Text = "Projects";
@@ -281,6 +322,11 @@
         private Button btnApplyFilters;
         private Button btnRefreshFilters;
         private ToolStripMenuItem mnuMembers;
-        private ToolStripMenuItem mnuProjectTypes;
+        private ToolStripMenuItem mnuProjects;
+        private ToolStripMenuItem mnuConfigGeneral;
+        private ToolStripMenuItem mnuConfigUsers;
+        private ToolStripMenuItem mnuConfigMembers;
+        private ToolStripMenuItem mnuConfigMemberClasses;
+        private ToolStripMenuItem mnuConfigProjectTypes;
     }
 }
