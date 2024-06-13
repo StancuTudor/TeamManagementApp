@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TeamManagementApp.Models;
 using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
+using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Views.Main
 {
@@ -135,7 +136,7 @@ namespace TeamManagementApp.Views.Main
                     MemberId = (long)Selection.Null
                 }
             };
-            members.AddRange(await _commonService.GetAllMembers());
+            members.AddRange(await _commonService.GetAllMembers(ActiveSelection.OnlyActive));
 
             _view.CmbAssigneeFilter.DataSource = new BindingList<Member>(members);
         }
@@ -165,7 +166,7 @@ namespace TeamManagementApp.Views.Main
                     TypeId = (long)Selection.Any
                 }
             };
-            types.AddRange(await _commonService.GetAllProjectTypes());
+            types.AddRange(await _commonService.GetAllProjectTypes(ActiveSelection.OnlyActive));
 
             _view.CmbTypeFilter.DataSource = new BindingList<ProjectType>(types);
         }
@@ -236,7 +237,7 @@ namespace TeamManagementApp.Views.Main
         {
             _sourceDgvProjects.Clear();
         }
-        public async Task ResetFilters()
+        public async Task RefreshFilters()
         {
             _view.TxtProjectFilter.Text = string.Empty;
             await InitializeFilters();

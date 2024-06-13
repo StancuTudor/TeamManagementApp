@@ -61,5 +61,10 @@ namespace TeamManagementApp.Views.Members
         {
             await Presenter.Save();
         }
+
+        public void CloseForm()
+        {
+            this.Close();
+        }
     }
 }

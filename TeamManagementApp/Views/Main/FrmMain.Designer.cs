@@ -31,9 +31,10 @@
             StripMainMenu = new MenuStrip();
             mnuAddProject = new ToolStripMenuItem();
             mnuMembers = new ToolStripMenuItem();
+            mnuProjectTypes = new ToolStripMenuItem();
             dgvProjects = new DataGridView();
             pnlProjects = new Panel();
-            btnResetFilters = new Button();
+            btnRefreshFilters = new Button();
             btnEmptyList = new Button();
             btnAddToList = new Button();
             btnApplyFilters = new Button();
@@ -45,7 +46,6 @@
             lblAssigneeFilter = new Label();
             txtProjectFilter = new TextBox();
             lblProjectFilter = new Label();
-            mnuProjectTypes = new ToolStripMenuItem();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
@@ -83,6 +83,17 @@
             mnuMembers.ToolTipText = "Members";
             mnuMembers.Click += mnuMembers_Click;
             // 
+            // mnuProjectTypes
+            // 
+            mnuProjectTypes.AutoSize = false;
+            mnuProjectTypes.AutoToolTip = true;
+            mnuProjectTypes.Image = Properties.Resources.question;
+            mnuProjectTypes.Name = "mnuProjectTypes";
+            mnuProjectTypes.Padding = new Padding(0);
+            mnuProjectTypes.Size = new Size(64, 64);
+            mnuProjectTypes.ToolTipText = "Project types";
+            mnuProjectTypes.Click += mnuProjectTypes_Click;
+            // 
             // dgvProjects
             // 
             dgvProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -93,7 +104,7 @@
             // 
             // pnlProjects
             // 
-            pnlProjects.Controls.Add(btnResetFilters);
+            pnlProjects.Controls.Add(btnRefreshFilters);
             pnlProjects.Controls.Add(btnEmptyList);
             pnlProjects.Controls.Add(btnAddToList);
             pnlProjects.Controls.Add(btnApplyFilters);
@@ -111,16 +122,16 @@
             pnlProjects.Size = new Size(984, 646);
             pnlProjects.TabIndex = 2;
             // 
-            // btnResetFilters
+            // btnRefreshFilters
             // 
-            btnResetFilters.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnResetFilters.Location = new Point(860, 36);
-            btnResetFilters.Name = "btnResetFilters";
-            btnResetFilters.Size = new Size(121, 30);
-            btnResetFilters.TabIndex = 13;
-            btnResetFilters.Text = "Reset filters";
-            btnResetFilters.UseVisualStyleBackColor = true;
-            btnResetFilters.Click += btnResetFilters_Click;
+            btnRefreshFilters.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefreshFilters.Location = new Point(860, 36);
+            btnRefreshFilters.Name = "btnRefreshFilters";
+            btnRefreshFilters.Size = new Size(121, 30);
+            btnRefreshFilters.TabIndex = 13;
+            btnRefreshFilters.Text = "Refresh filters";
+            btnRefreshFilters.UseVisualStyleBackColor = true;
+            btnRefreshFilters.Click += btnRefreshFilters_Click;
             // 
             // btnEmptyList
             // 
@@ -230,17 +241,6 @@
             lblProjectFilter.TabIndex = 2;
             lblProjectFilter.Text = "Project";
             // 
-            // mnuProjectTypes
-            // 
-            mnuProjectTypes.AutoSize = false;
-            mnuProjectTypes.AutoToolTip = true;
-            mnuProjectTypes.Image = Properties.Resources.question;
-            mnuProjectTypes.Name = "mnuProjectTypes";
-            mnuProjectTypes.Padding = new Padding(0);
-            mnuProjectTypes.Size = new Size(64, 64);
-            mnuProjectTypes.ToolTipText = "Project types";
-            mnuProjectTypes.Click += mnuProjectTypes_Click;
-            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -279,7 +279,7 @@
         private Button btnEmptyList;
         private Button btnAddToList;
         private Button btnApplyFilters;
-        private Button btnResetFilters;
+        private Button btnRefreshFilters;
         private ToolStripMenuItem mnuMembers;
         private ToolStripMenuItem mnuProjectTypes;
     }

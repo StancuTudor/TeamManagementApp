@@ -33,24 +33,24 @@ namespace TeamManagementApp.Repositories
 
         public async Task InsertNewType(ProjectType type)
         {
-            var query = @"insert into ProjectTypes (Type) values (@type)";
+            var query = @"insert into ProjectTypes (Type, Active) values (@type, @active)";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 await connection.ExecuteAsync(query, new
                 {
-                    type = type.Type
+                    type = type.Type, active = type.Active
                 });
             }
         }
 
         public async Task UpdateType(ProjectType type)
         {
-            var query = @"update ProjectTypes set Type = @type where typeId = @typeId";
+            var query = @"update ProjectTypes set Type = @type, Active = @active where typeId = @typeId";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 await connection.ExecuteAsync(query, new
                 {
-                    type = type.Type, typeId = type.TypeId
+                    type = type.Type, active = type.Active, typeId = type.TypeId
                 });
             }
         }

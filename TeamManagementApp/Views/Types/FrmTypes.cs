@@ -19,6 +19,7 @@ namespace TeamManagementApp.Views.Members
         #region Properties
         public ICommonComboBox<ProjectType, long> CmbTypes { get; set; }
         public ICommonTextBox TxtTypeDetails { get; set; }
+        public ICommonCheckBox ChkActive { get; set; }
         #endregion
         public TypesPresenter Presenter { get; private set; }
         public FrmTypes(TypesPresenter presenter)
@@ -34,6 +35,7 @@ namespace TeamManagementApp.Views.Members
         {
             CmbTypes = new WinWrapperComboBox<ProjectType, long>(cmbType, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
             TxtTypeDetails = new WinWrapperTextBox(txtTypeDetails);
+            ChkActive = new WinWrapperCheckBox(chkActive);
         }
 
         private async void FrmTypes_Load(object sender, EventArgs e)

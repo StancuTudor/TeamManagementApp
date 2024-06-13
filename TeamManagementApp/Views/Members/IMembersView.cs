@@ -15,5 +15,6 @@ namespace TeamManagementApp.Views.Members
         ICommonComboBox<MemberClass, long> CmbClass { get; set; }
         ICommonComboBox<UserLogin, long> CmbUser { get; set; }
         ICommonCheckBox ChkActive { get; set; }
+        void CloseForm();
     }
 }

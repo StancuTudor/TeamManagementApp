@@ -8,6 +8,7 @@ using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Models;
 using TeamManagementApp.Services;
 using TeamManagementApp.Views.Main;
+using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Views.Members
 {
@@ -29,7 +30,15 @@ namespace TeamManagementApp.Views.Members
 
         public async Task FormLoad()
         {
-            await InitializeControls();
+            try
+            {
+                await InitializeControls();
+            }
+            catch(ValidationException ex)
+            {
+                MessageBox.Show($"{ex.Message}.\r\nYou can't add members.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _view.CloseForm();
+            }
         }
         private async Task InitializeControls()
         {
@@ -47,14 +56,15 @@ namespace TeamManagementApp.Views.Members
                     MemberId = (long)Selection.New
                 }
             };
-            members.AddRange(await _commonService.GetAllMembers());
+            members.AddRange(await _commonService.GetAllMembers(ActiveSelection.All));
 
             _view.CmbMembers.DataSource = new BindingList<Member>(members);
         }
         private async Task InitializeMemberClasses()
         {
-            var classes = await _commonService.GetAllMemberClasses();
-
+            var classes = await _commonService.GetAllMemberClasses(ActiveSelection.OnlyActive);
+            if (classes.Count == 0)
+                throw new ValidationException("There are no active member classes.");
             _view.CmbClass.DataSource = new BindingList<MemberClass>(classes);
         }
         private async Task InitializeUsers()

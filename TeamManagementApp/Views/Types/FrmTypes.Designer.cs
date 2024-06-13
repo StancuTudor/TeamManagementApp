@@ -35,6 +35,7 @@
             gbDetails = new GroupBox();
             btnDelete = new Button();
             btnSave = new Button();
+            chkActive = new CheckBox();
             gbDetails.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,11 +79,12 @@
             // 
             // gbDetails
             // 
+            gbDetails.Controls.Add(chkActive);
             gbDetails.Controls.Add(txtTypeDetails);
             gbDetails.Controls.Add(lblTypeDetails);
             gbDetails.Location = new Point(12, 47);
             gbDetails.Name = "gbDetails";
-            gbDetails.Size = new Size(211, 56);
+            gbDetails.Size = new Size(279, 56);
             gbDetails.TabIndex = 15;
             gbDetails.TabStop = false;
             gbDetails.Text = "Details";
@@ -109,11 +111,22 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // chkActive
+            // 
+            chkActive.AutoSize = true;
+            chkActive.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkActive.Location = new Point(207, 18);
+            chkActive.Name = "chkActive";
+            chkActive.Size = new Size(69, 24);
+            chkActive.TabIndex = 15;
+            chkActive.Text = "Active";
+            chkActive.UseVisualStyleBackColor = true;
+            // 
             // FrmTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(234, 147);
+            ClientSize = new Size(303, 147);
             Controls.Add(btnSave);
             Controls.Add(btnDelete);
             Controls.Add(cmbType);
@@ -139,5 +152,6 @@
         private GroupBox gbDetails;
         private Button btnDelete;
         private Button btnSave;
+        private CheckBox chkActive;
     }
 }

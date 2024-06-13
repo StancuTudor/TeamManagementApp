@@ -8,6 +8,7 @@ using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Models;
 using TeamManagementApp.Services;
 using TeamManagementApp.Views.Main;
+using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Views.Members
 {
@@ -45,7 +46,7 @@ namespace TeamManagementApp.Views.Members
                     TypeId = (long)Selection.New
                 }
             };
-            types.AddRange(await _commonService.GetAllProjectTypes());
+            types.AddRange(await _commonService.GetAllProjectTypes(ActiveSelection.All));
 
             _view.CmbTypes.DataSource = new BindingList<ProjectType>(types);
         }
@@ -65,10 +66,12 @@ namespace TeamManagementApp.Views.Members
         private void FillForNewType()
         {
             _view.TxtTypeDetails.Text = string.Empty;
+            _view.ChkActive.Checked = true;
         }
         private void FillForType(ProjectType selectedType)
         {
             _view.TxtTypeDetails.Text = selectedType.Type;
+            _view.ChkActive.Checked = selectedType.Active;
         }
 
         public async Task DeleteMember()
@@ -113,7 +116,8 @@ namespace TeamManagementApp.Views.Members
             return new ProjectType()
             {
                 TypeId = _view.CmbTypes.SelectedValue == (long)Selection.New ? 0 : _view.CmbTypes.SelectedValue,
-                Type = _view.TxtTypeDetails.Text.Trim()
+                Type = _view.TxtTypeDetails.Text.Trim(),
+                Active = _view.ChkActive.Checked
             };
         }
     }

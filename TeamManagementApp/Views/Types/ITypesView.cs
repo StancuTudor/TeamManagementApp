@@ -12,5 +12,6 @@ namespace TeamManagementApp.Views.Members
     {
         ICommonComboBox<ProjectType, long> CmbTypes { get; set; }
         ICommonTextBox TxtTypeDetails { get; set; }
+        ICommonCheckBox ChkActive { get; set; }
     }
 }

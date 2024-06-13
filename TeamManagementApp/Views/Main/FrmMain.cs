@@ -145,9 +145,9 @@ namespace TeamManagementApp
             Presenter.EmptyList();
         }
 
-        private async void btnResetFilters_Click(object sender, EventArgs e)
+        private async void btnRefreshFilters_Click(object sender, EventArgs e)
         {
-            await Presenter.ResetFilters();
+            await Presenter.RefreshFilters();
         }
 
         private void mnuMembers_Click(object sender, EventArgs e)
