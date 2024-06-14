@@ -7,6 +7,7 @@ namespace TeamManagementApp.Services
     public interface IMainService
     {
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter);
+        ServerConfigModel GetServerConfig();
     }
 
     public class MainService : IMainService
@@ -51,6 +52,11 @@ namespace TeamManagementApp.Services
                 conditions.Add($"{typeColumn} in ({string.Join(",", filter.Types)})");
             }
             return conditions;
+        }
+
+        public ServerConfigModel GetServerConfig()
+        {
+            return _mainRepository.GetServerConfig();
         }
     }
 }

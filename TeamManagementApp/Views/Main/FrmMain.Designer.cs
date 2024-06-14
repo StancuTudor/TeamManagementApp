@@ -52,9 +52,13 @@
             lblAssigneeFilter = new Label();
             txtProjectFilter = new TextBox();
             lblProjectFilter = new Label();
+            statusStrip = new StatusStrip();
+            lblLoggedInUser = new ToolStripStatusLabel();
+            lblConnectedServer = new ToolStripStatusLabel();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
+            statusStrip.SuspendLayout();
             SuspendLayout();
             // 
             // StripMainMenu
@@ -143,7 +147,7 @@
             dgvProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProjects.Location = new Point(0, 72);
             dgvProjects.Name = "dgvProjects";
-            dgvProjects.Size = new Size(984, 574);
+            dgvProjects.Size = new Size(984, 558);
             dgvProjects.TabIndex = 1;
             // 
             // pnlProjects
@@ -163,7 +167,7 @@
             pnlProjects.Controls.Add(dgvProjects);
             pnlProjects.Location = new Point(12, 71);
             pnlProjects.Name = "pnlProjects";
-            pnlProjects.Size = new Size(984, 646);
+            pnlProjects.Size = new Size(984, 633);
             pnlProjects.TabIndex = 2;
             // 
             // btnRefreshFilters
@@ -285,25 +289,50 @@
             lblProjectFilter.TabIndex = 2;
             lblProjectFilter.Text = "Project";
             // 
+            // statusStrip
+            // 
+            statusStrip.Items.AddRange(new ToolStripItem[] { lblLoggedInUser, lblConnectedServer });
+            statusStrip.Location = new Point(0, 704);
+            statusStrip.Name = "statusStrip";
+            statusStrip.Size = new Size(1008, 25);
+            statusStrip.TabIndex = 3;
+            statusStrip.Text = "statusStrip1";
+            // 
+            // lblLoggedInUser
+            // 
+            lblLoggedInUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLoggedInUser.Name = "lblLoggedInUser";
+            lblLoggedInUser.Size = new Size(107, 20);
+            lblLoggedInUser.Text = "Logged in user";
+            // 
+            // lblConnectedServer
+            // 
+            lblConnectedServer.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblConnectedServer.Name = "lblConnectedServer";
+            lblConnectedServer.Size = new Size(123, 20);
+            lblConnectedServer.Text = "Connected server";
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1008, 729);
+            Controls.Add(statusStrip);
             Controls.Add(StripMainMenu);
             Controls.Add(pnlProjects);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Projects";
             Load += FrmMain_Load;
+            Resize += FrmMain_Resize;
             StripMainMenu.ResumeLayout(false);
             StripMainMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).EndInit();
             pnlProjects.ResumeLayout(false);
             pnlProjects.PerformLayout();
+            statusStrip.ResumeLayout(false);
+            statusStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -333,5 +362,8 @@
         private ToolStripMenuItem mnuConfigMembers;
         private ToolStripMenuItem mnuConfigMemberClasses;
         private ToolStripMenuItem mnuConfigProjectTypes;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel lblLoggedInUser;
+        private ToolStripStatusLabel lblConnectedServer;
     }
 }

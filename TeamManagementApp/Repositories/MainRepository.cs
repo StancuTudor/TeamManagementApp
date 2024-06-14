@@ -7,6 +7,7 @@ namespace TeamManagementApp.Repositories
     public interface IMainRepository
     {
         Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions);
+        ServerConfigModel GetServerConfig();
     }
 
     public class MainRepository : IMainRepository
@@ -40,6 +41,11 @@ namespace TeamManagementApp.Repositories
                 });
                 return result.ToList();
             }
+        }
+
+        public ServerConfigModel GetServerConfig()
+        {
+            return _sqlProvider.GetServerConfig();
         }
     }
 }

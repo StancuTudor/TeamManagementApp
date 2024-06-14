@@ -1,6 +1,7 @@
 using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
+using TeamManagementApp.Utils;
 using TeamManagementApp.Views;
 using TeamManagementApp.Views.Main;
 using TeamManagementApp.Views.Members;
@@ -15,10 +16,14 @@ namespace TeamManagementApp
         public ICommonComboBox<ProjectStatus, long> CmbStatusFilter { get; set; }
         public ICommonComboBox<ProjectType, long> CmbTypeFilter { get; set; }
         public ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
+        public string LblLoggedInUserText { get => lblLoggedInUser.Text.ValueOrEmptyIfNull(); set => lblLoggedInUser.Text = value; }
+        public string LblConnectedServerText { get => lblConnectedServer.Text.ValueOrEmptyIfNull(); set => lblConnectedServer.Text = value; }
         #endregion
 
         private readonly List<Form> _openForms = new List<Form>();
         private readonly IViewFactory _viewFactory;
+        private readonly Size differenceBetweenFormAndMainPanel;
+        private readonly Size differenceBetweenMainPanelAndDGV;
         public MainPresenter Presenter { get; private set; }
         public FrmMain(MainPresenter presenter, IViewFactory viewFactory)
         {
@@ -28,6 +33,9 @@ namespace TeamManagementApp
             Presenter = presenter;
             Presenter.SetView(this);
             _viewFactory = viewFactory;
+
+            differenceBetweenFormAndMainPanel = (this.Size - pnlProjects.Size);
+            differenceBetweenMainPanelAndDGV = (pnlProjects.Size - dgvProjects.Size);
         }
 
         private void InitializeWrappers()
@@ -165,6 +173,12 @@ namespace TeamManagementApp
         {
             var frmMemberClasses = _viewFactory.Create<FrmMemberClasses>();
             CreateOrOpenForm(frmMemberClasses);
+        }
+
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            pnlProjects.Size = this.Size - differenceBetweenFormAndMainPanel;
+            dgvProjects.Size = pnlProjects.Size - differenceBetweenMainPanelAndDGV;
         }
     }
 }

@@ -87,8 +87,17 @@ namespace TeamManagementApp.Views.Main
 
         public async Task FormLoad()
         {
+            InitializeStatusBar();
             await InitializeFilters();
             await InitializeListForCurrentUser();
+        }
+
+        private void InitializeStatusBar()
+        {
+            var serverConfig = _mainService.GetServerConfig();
+
+            _view.LblLoggedInUserText = $"Logged in as {_currentUserService.UserName}";
+            _view.LblConnectedServerText = $"@{serverConfig.Database} on {serverConfig.Server}";
         }
 
         private async Task InitializeFilters()

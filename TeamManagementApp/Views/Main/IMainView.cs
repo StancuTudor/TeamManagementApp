@@ -10,5 +10,7 @@ namespace TeamManagementApp.Views.Main
         ICommonComboBox<ProjectStatus, long> CmbStatusFilter { get; set; }
         ICommonComboBox<ProjectType, long> CmbTypeFilter { get; set; }
         ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
+        string LblLoggedInUserText { get; set; }
+        string LblConnectedServerText { get; set; }
     }
 }

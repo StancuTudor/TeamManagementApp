@@ -25,5 +25,12 @@ namespace TeamManagementApp.Utils
             optionsBuilder.Services.AddSingleton<IOptionsChangeTokenSource<TOptions>, ConfigurationChangeTokenSource<TOptions>>();
             return optionsBuilder;
         }
+
+        public static string ValueOrEmptyIfNull(this string? s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return string.Empty;
+            return s;
+        }
     }
 }
