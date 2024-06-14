@@ -32,6 +32,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\MemberClasses\FrmMemberClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Types\FrmTypes.cs">
       <SubType>Form</SubType>
     </Compile>

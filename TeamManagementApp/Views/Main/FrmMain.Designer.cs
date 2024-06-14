@@ -100,6 +100,7 @@
             mnuConfigMemberClasses.Name = "mnuConfigMemberClasses";
             mnuConfigMemberClasses.Size = new Size(214, 22);
             mnuConfigMemberClasses.Text = "Configure member classes";
+            mnuConfigMemberClasses.Click += mnuConfigMemberClasses_Click;
             // 
             // mnuProjects
             // 
@@ -131,7 +132,7 @@
             // mnuConfigUsers
             // 
             mnuConfigUsers.Name = "mnuConfigUsers";
-            mnuConfigUsers.Size = new Size(180, 22);
+            mnuConfigUsers.Size = new Size(157, 22);
             mnuConfigUsers.Text = "Configure users";
             // 
             // dgvProjects

@@ -136,25 +136,37 @@ namespace TeamManagementApp.Views.Members
         private async Task DeleteMemberById(long memberId)
         {
             await _membersService.DeleteMemberById(memberId);
-            await InitializeMembers();
             MessageBox.Show("Member delete succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            await InitializeMembers();
         }
 
         public async Task Save()
         {
-            var memberId = _view.CmbMembers.SelectedValue;
-            var newMember = GetMemberModelFromControls();
-            if (memberId == (long)Selection.New)
-                await _membersService.InsertNewMember(newMember);
-            else
-                await _membersService.UpdateMember(newMember);
+            try
+            {
+                var memberId = _view.CmbMembers.SelectedValue;
+                var newMember = GetMemberModelFromControls();
+                if (memberId == (long)Selection.New)
+                    await _membersService.InsertNewMember(newMember);
+                else
+                    await _membersService.UpdateMember(newMember);
 
-            await InitializeMembers();
-            MessageBox.Show("Member saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Member saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await InitializeMembers();
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private Member GetMemberModelFromControls()
         {
+            if (_view.CmbClass.SelectedIndex == -1)
+            {
+                throw new ValidationException("Select a valid class.");
+            }
+
             return new Member()
             {
                 MemberId = _view.CmbMembers.SelectedValue == (long)Selection.New ? 0 : _view.CmbMembers.SelectedValue,

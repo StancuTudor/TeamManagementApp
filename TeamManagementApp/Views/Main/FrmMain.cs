@@ -161,5 +161,11 @@ namespace TeamManagementApp
             var frmTypes = _viewFactory.Create<FrmTypes>();
             CreateOrOpenForm(frmTypes);
         }
+
+        private void mnuConfigMemberClasses_Click(object sender, EventArgs e)
+        {
+            var frmMemberClasses = _viewFactory.Create<FrmMemberClasses>();
+            CreateOrOpenForm(frmMemberClasses);
+        }
     }
 }

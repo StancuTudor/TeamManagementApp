@@ -44,28 +44,11 @@ namespace TeamManagementApp
 
             builder.Services.AddHostedService<ApplicationWorker>();
             builder.Services.AddSingleton<IViewFactory, ViewFactory>();
+
             builder.Services.AddTransient<ISqlServerConnectionProvider, SqlServerConnectionProvider>();
             builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
-            builder.Services.AddSingleton<ILoginService, LoginService>();
-            builder.Services.AddSingleton<ILoginRepository, LoginRepository>();
-
-            builder.Services.AddSingleton<ICommonService, CommonService>();
-            builder.Services.AddSingleton<ICommonRepository, CommonRepository>();
-
-            builder.Services.AddSingleton<IMainService, MainService>();
-            builder.Services.AddSingleton<IMainRepository, MainRepository>();
-
-            builder.Services.AddSingleton<IMembersService, MembersService>();
-            builder.Services.AddSingleton<IMembersRepository, MembersRepository>();
-
-            builder.Services.AddSingleton<ITypesService, TypesService>();
-            builder.Services.AddSingleton<ITypesRepository, TypesRepository>();
-
-            builder.Services.AddTransient<LoginPresenter>();
-            builder.Services.AddTransient<MainPresenter>();
-            builder.Services.AddTransient<MembersPresenter>();
-            builder.Services.AddTransient<TypesPresenter>();
+            InjectFormPresentersAndServices(builder.Services);
 
             RegisterAllViewsAsService(builder.Services);
 
@@ -75,6 +58,38 @@ namespace TeamManagementApp
         static void ConfigureOptions(IServiceCollection services)
         {
             services.AddOptions<ConnectionStringOptions>().BindConfigurationAsRequired(nameof(ConnectionStringOptions));
+        }
+
+        static void InjectFormPresentersAndServices(IServiceCollection services)
+        {
+            // Login
+            services.AddSingleton<ILoginService, LoginService>();
+            services.AddSingleton<ILoginRepository, LoginRepository>();
+            services.AddTransient<LoginPresenter>();
+
+            // Common service
+            services.AddSingleton<ICommonService, CommonService>();
+            services.AddSingleton<ICommonRepository, CommonRepository>();
+            
+            // Main
+            services.AddSingleton<IMainService, MainService>();
+            services.AddSingleton<IMainRepository, MainRepository>();
+            services.AddTransient<MainPresenter>();
+            
+            // Members
+            services.AddSingleton<IMembersService, MembersService>();
+            services.AddSingleton<IMembersRepository, MembersRepository>();
+            services.AddTransient<MembersPresenter>();
+
+            // Member classes
+            services.AddSingleton<IMemberClassesService, MemberClassesService>();
+            services.AddSingleton<IMemberClassesRepository, MemberClassesRepository>();
+            services.AddTransient<MemberClassesPresenter>();
+
+            // Types
+            services.AddSingleton<ITypesService, TypesService>();
+            services.AddSingleton<ITypesRepository, TypesRepository>();
+            services.AddTransient<TypesPresenter>();
         }
 
         static void RegisterAllViewsAsService(IServiceCollection services)

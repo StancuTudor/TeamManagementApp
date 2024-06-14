@@ -94,24 +94,24 @@ namespace TeamManagementApp.Views.Members
         private async Task DeleteTypeById(long memberId)
         {
             await _typesService.DeleteTypeById(memberId);
-            await InitializeTypes();
             MessageBox.Show("Type delete succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            await InitializeTypes();
         }
 
         public async Task Save()
         {
             var typeId = _view.CmbTypes.SelectedValue;
-            var newType = GetMemberModelFromControls();
+            var newType = GetTypeModelFromControls();
             if (typeId == (long)Selection.New)
                 await _typesService.InsertNewType(newType);
             else
                 await _typesService.UpdateType(newType);
 
-            await InitializeTypes();
             MessageBox.Show("Type saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            await InitializeTypes();
         }
 
-        private ProjectType GetMemberModelFromControls()
+        private ProjectType GetTypeModelFromControls()
         {
             return new ProjectType()
             {
