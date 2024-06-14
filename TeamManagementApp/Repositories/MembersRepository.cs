@@ -1,9 +1,4 @@
 ﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TeamManagementApp.Models;
 
 namespace TeamManagementApp.Repositories
@@ -38,7 +33,10 @@ namespace TeamManagementApp.Repositories
             {
                 await connection.ExecuteAsync(query, new
                 {
-                    name = member.Name, active = member.Active, classId = member.ClassId, userId = member.UserId
+                    name = member.Name,
+                    active = member.Active,
+                    classId = member.ClassId,
+                    userId = member.UserId
                 });
             }
         }
@@ -50,7 +48,11 @@ namespace TeamManagementApp.Repositories
             {
                 await connection.ExecuteAsync(query, new
                 {
-                    name = member.Name, active = member.Active, classId = member.ClassId, userId = member.UserId, memberId = member.MemberId
+                    name = member.Name,
+                    active = member.Active,
+                    classId = member.ClassId,
+                    userId = member.UserId,
+                    memberId = member.MemberId
                 });
             }
         }

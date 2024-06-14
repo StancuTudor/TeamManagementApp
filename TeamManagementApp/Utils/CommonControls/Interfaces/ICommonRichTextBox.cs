@@ -1,6 +1,4 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
-
-namespace TeamManagementApp.Utils.CommonControls.Interfaces
+﻿namespace TeamManagementApp.Utils.CommonControls.Interfaces
 {
     public interface ICommonRichTextBox
     {

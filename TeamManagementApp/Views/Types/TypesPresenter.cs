@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamManagementApp.Models.Filters;
+﻿using System.ComponentModel;
 using TeamManagementApp.Models;
+using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
-using TeamManagementApp.Views.Main;
 using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Views.Members
@@ -54,7 +48,7 @@ namespace TeamManagementApp.Views.Members
         public void FillForSelectedType()
         {
             var selectedType = _view.CmbTypes.SelectedItem;
-            if(selectedType.TypeId == (long)Selection.New)
+            if (selectedType.TypeId == (long)Selection.New)
             {
                 FillForNewType();
             }
@@ -89,7 +83,7 @@ namespace TeamManagementApp.Views.Members
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } 
+            }
         }
         private async Task DeleteTypeById(long memberId)
         {

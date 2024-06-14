@@ -1,5 +1,4 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
-using TeamManagementApp.Utils.CommonControls.Interfaces;
+﻿using TeamManagementApp.Utils.CommonControls.Interfaces;
 
 namespace TeamManagementApp.Utils.CommonControls
 {

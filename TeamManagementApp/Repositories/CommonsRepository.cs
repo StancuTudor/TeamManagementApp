@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamManagementApp.Models.Filters;
+﻿using Dapper;
 using TeamManagementApp.Models;
 using TeamManagementApp.Utils;
-using Dapper;
 
 namespace TeamManagementApp.Repositories
 {
@@ -30,7 +24,7 @@ namespace TeamManagementApp.Repositories
         public async Task<List<Member>> GetAllMembers(ActiveSelection active)
         {
             string condition = string.Empty;
-            if(active != ActiveSelection.All)
+            if (active != ActiveSelection.All)
             {
                 condition = "where active = @active";
             }
@@ -38,7 +32,7 @@ namespace TeamManagementApp.Repositories
             var query = $@"select MemberId, Name, Active, ClassId, UserId from Members {condition} order by Name";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
-                var result = await connection.QueryAsync<Member>(query, new { active = (int)active } );
+                var result = await connection.QueryAsync<Member>(query, new { active = (int)active });
                 return result.ToList();
             }
         }

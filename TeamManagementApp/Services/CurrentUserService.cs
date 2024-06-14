@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TeamManagementApp.Services
+﻿namespace TeamManagementApp.Services
 {
-    public interface ICurrentUserService 
-    { 
+    public interface ICurrentUserService
+    {
         long UserId { get; set; }
         string UserName { get; set; }
         long? MemberId { get; set; }

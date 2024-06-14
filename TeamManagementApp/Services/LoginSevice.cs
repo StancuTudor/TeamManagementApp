@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamManagementApp.Models;
+﻿using TeamManagementApp.Models;
 using TeamManagementApp.Repositories;
 
 namespace TeamManagementApp.Services
@@ -31,7 +26,7 @@ namespace TeamManagementApp.Services
             };
 
             var loginUserResult = await _loginRepository.GetUserLogin(user, password);
-            
+
             // User or password not found.
             if (loginUserResult == null)
             {

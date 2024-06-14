@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMemberClasses));
             cmbMemberClass = new ComboBox();
             lblMemberClass = new Label();
             txtMemberClassDetails = new TextBox();
@@ -133,8 +134,10 @@
             Controls.Add(lblMemberClass);
             Controls.Add(gbDetails);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmMemberClasses";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Member classes";
             Load += FrmMemberClasses_Load;
             gbDetails.ResumeLayout(false);

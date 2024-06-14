@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeamManagementApp.Models;
+﻿using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
-using TeamManagementApp.Views.Main;
 
 namespace TeamManagementApp.Views.Members
 {

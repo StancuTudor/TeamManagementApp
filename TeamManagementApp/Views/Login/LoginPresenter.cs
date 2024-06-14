@@ -1,7 +1,6 @@
-﻿using TeamManagementApp.Services;
+﻿using TeamManagementApp.Models;
+using TeamManagementApp.Services;
 using TeamManagementApp.Utils;
-using TeamManagementApp.Models;
-using Refit;
 
 namespace TeamManagementApp.Views.Login
 {
@@ -76,7 +75,8 @@ namespace TeamManagementApp.Views.Login
             }
             catch (Exception ex)
             {
-                loginOut = new LoginOut() { 
+                loginOut = new LoginOut()
+                {
                     UserData = new ValidateUserOut()
                     {
                         UserLogin = null,

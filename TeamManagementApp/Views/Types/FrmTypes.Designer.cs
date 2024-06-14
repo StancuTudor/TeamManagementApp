@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTypes));
             cmbType = new ComboBox();
             lblType = new Label();
             txtTypeDetails = new TextBox();
             lblTypeDetails = new Label();
             gbDetails = new GroupBox();
+            chkActive = new CheckBox();
             btnDelete = new Button();
             btnSave = new Button();
-            chkActive = new CheckBox();
             gbDetails.SuspendLayout();
             SuspendLayout();
             // 
@@ -89,6 +90,17 @@
             gbDetails.TabStop = false;
             gbDetails.Text = "Details";
             // 
+            // chkActive
+            // 
+            chkActive.AutoSize = true;
+            chkActive.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkActive.Location = new Point(207, 18);
+            chkActive.Name = "chkActive";
+            chkActive.Size = new Size(69, 24);
+            chkActive.TabIndex = 15;
+            chkActive.Text = "Active";
+            chkActive.UseVisualStyleBackColor = true;
+            // 
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -111,17 +123,6 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // chkActive
-            // 
-            chkActive.AutoSize = true;
-            chkActive.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkActive.Location = new Point(207, 18);
-            chkActive.Name = "chkActive";
-            chkActive.Size = new Size(69, 24);
-            chkActive.TabIndex = 15;
-            chkActive.Text = "Active";
-            chkActive.UseVisualStyleBackColor = true;
-            // 
             // FrmTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -133,8 +134,10 @@
             Controls.Add(lblType);
             Controls.Add(gbDetails);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmTypes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Project types";
             Load += FrmTypes_Load;
             gbDetails.ResumeLayout(false);

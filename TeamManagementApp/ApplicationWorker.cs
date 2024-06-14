@@ -1,7 +1,6 @@
-﻿using TeamManagementApp.Services;
-using TeamManagementApp.Views;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TeamManagementApp.Views;
 using TeamManagementApp.Views.Login;
 
 namespace TeamManagementApp

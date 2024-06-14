@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using TeamManagementApp.Models;
 using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
@@ -140,7 +135,7 @@ namespace TeamManagementApp.Views.Main
 
             _view.CmbAssigneeFilter.DataSource = new BindingList<Member>(members);
         }
-        
+
         private async Task InitializeStatuses()
         {
             var statuses = new List<ProjectStatus>
@@ -155,7 +150,7 @@ namespace TeamManagementApp.Views.Main
 
             _view.CmbStatusFilter.DataSource = new BindingList<ProjectStatus>(statuses);
         }
-        
+
         private async Task InitializeTypes()
         {
             var types = new List<ProjectType>

@@ -1,5 +1,5 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using TeamManagementApp.Util.CommonControls.Interfaces;
 
 namespace TeamManagementApp.Util.CommonControls
 {

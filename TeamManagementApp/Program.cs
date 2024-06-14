@@ -4,12 +4,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using TeamManagementApp.Options;
-using TeamManagementApp.Views;
-using TeamManagementApp.Utils;
+using TeamManagementApp.Repositories;
 using TeamManagementApp.Services;
+using TeamManagementApp.Utils;
+using TeamManagementApp.Views;
 using TeamManagementApp.Views.Login;
 using TeamManagementApp.Views.Main;
-using TeamManagementApp.Repositories;
 using TeamManagementApp.Views.Members;
 
 namespace TeamManagementApp
@@ -70,12 +70,12 @@ namespace TeamManagementApp
             // Common service
             services.AddSingleton<ICommonService, CommonService>();
             services.AddSingleton<ICommonRepository, CommonRepository>();
-            
+
             // Main
             services.AddSingleton<IMainService, MainService>();
             services.AddSingleton<IMainRepository, MainRepository>();
             services.AddTransient<MainPresenter>();
-            
+
             // Members
             services.AddSingleton<IMembersService, MembersService>();
             services.AddSingleton<IMembersRepository, MembersRepository>();

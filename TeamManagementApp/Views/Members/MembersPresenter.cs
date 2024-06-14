@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamManagementApp.Models.Filters;
+﻿using System.ComponentModel;
 using TeamManagementApp.Models;
+using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
-using TeamManagementApp.Views.Main;
 using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Views.Members
@@ -34,7 +28,7 @@ namespace TeamManagementApp.Views.Members
             {
                 await InitializeControls();
             }
-            catch(ValidationException ex)
+            catch (ValidationException ex)
             {
                 MessageBox.Show($"{ex.Message}.\r\nYou can't add members.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _view.CloseForm();
@@ -85,7 +79,7 @@ namespace TeamManagementApp.Views.Members
         public void FillForSelectedMember()
         {
             var selectedMember = _view.CmbMembers.SelectedItem;
-            if(selectedMember.MemberId == (long)Selection.New)
+            if (selectedMember.MemberId == (long)Selection.New)
             {
                 FillForNewMember();
             }
@@ -131,7 +125,7 @@ namespace TeamManagementApp.Views.Members
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } 
+            }
         }
         private async Task DeleteMemberById(long memberId)
         {

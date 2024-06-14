@@ -137,7 +137,10 @@
             // 
             // dgvProjects
             // 
-            dgvProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProjects.AllowUserToAddRows = false;
+            dgvProjects.AllowUserToDeleteRows = false;
+            dgvProjects.AllowUserToOrderColumns = true;
+            dgvProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProjects.Location = new Point(0, 72);
             dgvProjects.Name = "dgvProjects";
             dgvProjects.Size = new Size(984, 574);
@@ -293,6 +296,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Projects";
             Load += FrmMain_Load;
             StripMainMenu.ResumeLayout(false);

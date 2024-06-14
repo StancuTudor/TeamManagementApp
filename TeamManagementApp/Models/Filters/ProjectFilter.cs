@@ -1,6 +1,4 @@
-﻿using TeamManagementApp.Views.Main;
-
-namespace TeamManagementApp.Models.Filters
+﻿namespace TeamManagementApp.Models.Filters
 {
     public enum Selection
     {
@@ -13,7 +11,7 @@ namespace TeamManagementApp.Models.Filters
     {
         public Selection ProjectSelection { get; set; } = Selection.Any;
         public string Project { get; set; } = string.Empty;
-        public Selection AssigneeSelection {  get; set; } = Selection.Any;
+        public Selection AssigneeSelection { get; set; } = Selection.Any;
         public List<long> Assignees { get; set; } = [];
         public Selection StatusSelection { get; set; } = Selection.Any;
         public List<long> Statuses { get; set; } = [];

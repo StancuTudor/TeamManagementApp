@@ -1,8 +1,7 @@
-﻿using TeamManagementApp.Options;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Options;
-using System.Data;
+﻿using Microsoft.Extensions.Options;
 using Npgsql;
+using System.Data;
+using TeamManagementApp.Options;
 
 namespace TeamManagementApp
 {

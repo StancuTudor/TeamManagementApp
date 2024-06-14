@@ -27,7 +27,7 @@ namespace TeamManagementApp.Repositories
                         inner join ProjectTypes t on p.TypeId = t.TypeId";
             if (conditions.Count > 0)
             {
-                query = $"{query} where {string.Join(" and ", conditions)}"; 
+                query = $"{query} where {string.Join(" and ", conditions)}";
             }
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {

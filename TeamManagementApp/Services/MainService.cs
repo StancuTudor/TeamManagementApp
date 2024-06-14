@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamManagementApp.Models;
+﻿using TeamManagementApp.Models;
 using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Repositories;
-using TeamManagementApp.Views.Main;
 
 namespace TeamManagementApp.Services
 {
