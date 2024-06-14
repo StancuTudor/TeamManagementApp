@@ -22,7 +22,7 @@ Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests. Here are some guidelines to get you started:
 
 Credits
-Icons used in this project are from https://www.flaticon.com/free-icons and created by Vectors Market - Flaticon.
+Icons used in this project are from https://www.flaticon.com/packs/project-management-2.
 
 License
 This project is licensed under the MIT License. You are free to use, modify, and distribute this template as you please. See the LICENSE file for more details.
