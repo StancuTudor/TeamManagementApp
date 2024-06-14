@@ -1,4 +1,6 @@
-﻿using TeamManagementApp.Models;
+﻿using Microsoft.Extensions.Hosting;
+using System.Reflection;
+using TeamManagementApp.Models;
 using TeamManagementApp.Services;
 using TeamManagementApp.Utils;
 
@@ -10,7 +12,7 @@ namespace TeamManagementApp.Views.Login
         private readonly ILoginService _loginSevice = loginService;
         private readonly ICurrentUserService _currentUserService = currentUserService;
 
-        public LoginState State { get; set; } = LoginState.NotAutorized;
+        public LoginState State { get; set; } = LoginState.Loading;
 
         public void SetView(ILoginView view)
         {
@@ -23,6 +25,8 @@ namespace TeamManagementApp.Views.Login
                 ValidateForm();
                 var result = await GetStatusLogin(_view.User, _view.Password);
                 ValidateResult(result);
+
+                await HandleAppVersion();
 
                 CloseAutorized();
             }
@@ -96,8 +100,32 @@ namespace TeamManagementApp.Views.Login
 
         public void CloseAutorized()
         {
+            if (State == LoginState.NotAutorized)
+                return;
+
             State = LoginState.Autorized;
             _view.Close();
+        }
+
+        private async Task HandleAppVersion()
+        {
+            var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var actualVersion = await _loginSevice.GetAppVersion();
+            var minVersion = new Version(actualVersion.MinVersion);
+            var latestVersion = new Version(actualVersion.LatestVersion);
+
+            if (currentVersion != null)
+            {
+                if (currentVersion < minVersion)
+                {
+                    MessageBox.Show("This version is no longer supported. Update needed.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    CloseNotAutorized();
+                }
+                else if (currentVersion != latestVersion)
+                {
+                    MessageBox.Show("This is not the latest app version.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }

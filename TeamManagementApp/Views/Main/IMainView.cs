@@ -12,5 +12,6 @@ namespace TeamManagementApp.Views.Main
         ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
         string LblLoggedInUserText { get; set; }
         string LblConnectedServerText { get; set; }
+        string LblAppVersionText { get; set; }
     }
 }

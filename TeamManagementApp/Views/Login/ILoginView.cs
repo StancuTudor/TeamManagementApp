@@ -9,6 +9,7 @@
     }
     public enum LoginState
     {
+        Loading,
         NotAutorized,
         Autorized
     }

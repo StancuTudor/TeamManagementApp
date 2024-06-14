@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System.ComponentModel;
+using System.Reflection;
 using TeamManagementApp.Models;
 using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
@@ -97,7 +99,8 @@ namespace TeamManagementApp.Views.Main
             var serverConfig = _mainService.GetServerConfig();
 
             _view.LblLoggedInUserText = $"Logged in as {_currentUserService.UserName}";
-            _view.LblConnectedServerText = $"@{serverConfig.Database} on {serverConfig.Server}";
+            _view.LblConnectedServerText = $"@ Connected to {serverConfig.Database} on {serverConfig.Server}";
+            _view.LblAppVersionText = $"@ Version {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         private async Task InitializeFilters()

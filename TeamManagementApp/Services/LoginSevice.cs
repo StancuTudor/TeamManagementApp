@@ -6,6 +6,7 @@ namespace TeamManagementApp.Services
     public interface ILoginService
     {
         Task<LoginOut> Login(string user, string password);
+        Task<AppVersionModel> GetAppVersion();
     }
 
     public class LoginService : ILoginService
@@ -64,6 +65,11 @@ namespace TeamManagementApp.Services
             {
                 UserData = resultUserData
             };
+        }
+
+        public async Task<AppVersionModel> GetAppVersion()
+        {
+            return await _loginRepository.GetAppVersion();
         }
     }
 }

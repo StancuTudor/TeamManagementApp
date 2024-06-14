@@ -18,6 +18,7 @@ namespace TeamManagementApp
         public ICommonDataGridView<DisplayedProject> DgvProjects { get; set; }
         public string LblLoggedInUserText { get => lblLoggedInUser.Text.ValueOrEmptyIfNull(); set => lblLoggedInUser.Text = value; }
         public string LblConnectedServerText { get => lblConnectedServer.Text.ValueOrEmptyIfNull(); set => lblConnectedServer.Text = value; }
+        public string LblAppVersionText { get => lblAppVersion.Text.ValueOrEmptyIfNull(); set => lblAppVersion.Text = value; }
         #endregion
 
         private readonly List<Form> _openForms = new List<Form>();
@@ -145,6 +146,12 @@ namespace TeamManagementApp
         private async void btnAddToList_Click(object sender, EventArgs e)
         {
             await Presenter.AddToList();
+        }
+
+        private async void txtProjectFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                await Presenter.AddToList();
         }
 
         private void btnEmptyList_Click(object sender, EventArgs e)

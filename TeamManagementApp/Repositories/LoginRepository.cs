@@ -7,6 +7,7 @@ namespace TeamManagementApp.Repositories
     {
         Task<UserLogin?> GetUserLogin(string user, string password);
         Task UpdateUserPassword(long userId, string password);
+        Task<AppVersionModel> GetAppVersion();
     }
 
     public class LoginRepository : ILoginRepository
@@ -35,6 +36,16 @@ namespace TeamManagementApp.Repositories
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 await connection.ExecuteAsync(query, new { userId = userId, password = password });
+            }
+        }
+
+        public async Task<AppVersionModel> GetAppVersion()
+        {
+            var query = @"select MinVersion, LatestVersion from AppVersion";
+            using (var connection = _sqlProvider.GetDbConnectionMain())
+            {
+                var result = await connection.QueryFirstAsync<AppVersionModel>(query);
+                return result;
             }
         }
     }

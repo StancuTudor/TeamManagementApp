@@ -55,6 +55,7 @@
             statusStrip = new StatusStrip();
             lblLoggedInUser = new ToolStripStatusLabel();
             lblConnectedServer = new ToolStripStatusLabel();
+            lblAppVersion = new ToolStripStatusLabel();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
@@ -278,6 +279,7 @@
             txtProjectFilter.Name = "txtProjectFilter";
             txtProjectFilter.Size = new Size(259, 27);
             txtProjectFilter.TabIndex = 3;
+            txtProjectFilter.KeyUp += txtProjectFilter_KeyUp;
             // 
             // lblProjectFilter
             // 
@@ -291,7 +293,7 @@
             // 
             // statusStrip
             // 
-            statusStrip.Items.AddRange(new ToolStripItem[] { lblLoggedInUser, lblConnectedServer });
+            statusStrip.Items.AddRange(new ToolStripItem[] { lblLoggedInUser, lblConnectedServer, lblAppVersion });
             statusStrip.Location = new Point(0, 704);
             statusStrip.Name = "statusStrip";
             statusStrip.Size = new Size(1008, 25);
@@ -311,6 +313,13 @@
             lblConnectedServer.Name = "lblConnectedServer";
             lblConnectedServer.Size = new Size(123, 20);
             lblConnectedServer.Text = "Connected server";
+            // 
+            // lblAppVersion
+            // 
+            lblAppVersion.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAppVersion.Name = "lblAppVersion";
+            lblAppVersion.Size = new Size(88, 20);
+            lblAppVersion.Text = "App version";
             // 
             // FrmMain
             // 
@@ -365,5 +374,6 @@
         private StatusStrip statusStrip;
         private ToolStripStatusLabel lblLoggedInUser;
         private ToolStripStatusLabel lblConnectedServer;
+        private ToolStripStatusLabel lblAppVersion;
     }
 }
