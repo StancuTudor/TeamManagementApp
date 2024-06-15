@@ -1,4 +1,5 @@
 ﻿using TeamManagementApp.Util.CommonControls.Interfaces;
+using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Util.CommonControls
 {
@@ -13,6 +14,7 @@ namespace TeamManagementApp.Util.CommonControls
         public bool Enabled { get => _dateTimePicker.Enabled; set => _dateTimePicker.Enabled = value; }
         public bool Visible { get => _dateTimePicker.Visible; set => _dateTimePicker.Visible = value; }
         public bool Checked { get => _dateTimePicker.Checked; set => _dateTimePicker.Checked = value; }
+        public string CustomFormat { get => _dateTimePicker.CustomFormat.ValueOrEmptyIfNull(); set => _dateTimePicker.CustomFormat = value; }
 
         public WinWrapperDateTimePicker(DateTimePicker dateTimePicker)
         {

@@ -6,6 +6,7 @@
         bool Enabled { get; set; }
         bool Visible { get; set; }
         DateTime Value { get; set; }
+        string CustomFormat { get; set; }
     }
 
     public interface ICommonDateTimePicker<T> : ICommonDateTimePicker

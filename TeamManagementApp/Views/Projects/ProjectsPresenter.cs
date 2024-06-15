@@ -11,6 +11,8 @@ namespace TeamManagementApp.Views.Projects
         private IProjectsView _view;
         private readonly ICommonService _commonService;
         private readonly IProjectsService _projectsService;
+        public FormType ProjectFormType;
+        public long CurrentProjectId;
 
         public ProjectsPresenter(ICommonService commonService, IProjectsService projectsService)
         {
@@ -31,13 +33,17 @@ namespace TeamManagementApp.Views.Projects
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show($"{ex.Message}.\r\nYou can't open this menu.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"{ex.Message}\r\nYou can't open this menu.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _view.CloseForm();
             }
         }
 
         private async Task InitializeControls()
         {
+            _view.DtpStartDate.Checked = false;
+            _view.DtpStartDate.CustomFormat = " ";
+            _view.DtpEndDate.Checked = false;
+            _view.DtpEndDate.CustomFormat = " ";
             await InitializeStatuses();
             await InitializeAssignees();
             await InitializeTypes();
@@ -88,13 +94,27 @@ namespace TeamManagementApp.Views.Projects
 
         private async Task InitializeCurrentProject()
         {
-            if (_view.ProjectFormType == FormType.Edit || _view.ProjectFormType == FormType.ViewOnly)
+            if (ProjectFormType == FormType.Edit || ProjectFormType == FormType.ViewOnly)
             {
-                Project? projectToLoad = null;
+                Project? projectToLoad = await _projectsService.GetProjectDataById(CurrentProjectId);
                 if (projectToLoad == null)
                 {
                     throw new ValidationException("Project not found.");
                 }
+
+                _view.TxtProjectName.Text = projectToLoad.ProjectName;
+                _view.CmbStatus.SelectedIndex = _view.CmbStatus.DataSource.ToList().FindIndex(x => x.StatusId == projectToLoad.StatusId);
+                _view.CmbAssignee.SelectedIndex = _view.CmbAssignee.DataSource.ToList().FindIndex(x => x.MemberId == projectToLoad.Assignee);
+                _view.CmbType.SelectedIndex = _view.CmbType.DataSource.ToList().FindIndex(x => x.TypeId == projectToLoad.TypeId);
+                if (projectToLoad.StartDate == null)
+                    _view.DtpStartDate.Checked = false;
+                else
+                    _view.DtpStartDate.Value = projectToLoad.StartDate.Value;
+                if (projectToLoad.EndDate == null)
+                    _view.DtpEndDate.Checked = false;
+                else
+                    _view.DtpEndDate.Value = projectToLoad.EndDate.Value;
+                _view.RTxtDescription.Text = projectToLoad.Description;
             }
         }
 

@@ -7,14 +7,12 @@ namespace TeamManagementApp.Views.Projects
 {
     public interface IProjectsView
     {
-        FormType ProjectFormType { get; set; }
-        long CurrentProjectId { get; set; }
         ICommonTextBox TxtProjectName { get; set; }
         ICommonComboBox<ProjectStatus, long> CmbStatus { get; set; }
         ICommonComboBox<Member, long> CmbAssignee { get; set; }
         ICommonComboBox<ProjectType, long> CmbType { get; set; }
-        ICommonDateTimePicker DtpDateStart { get; set; }
-        ICommonDateTimePicker DtpDateEnd { get; set; }
+        ICommonDateTimePicker DtpStartDate { get; set; }
+        ICommonDateTimePicker DtpEndDate { get; set; }
         ICommonRichTextBox RTxtDescription { get; set; }
         ICommonComboBox<MemberClass, long> CmbMemberClass { get; set; }
         ICommonComboBox<Member, long> CmbMember { get; set; }

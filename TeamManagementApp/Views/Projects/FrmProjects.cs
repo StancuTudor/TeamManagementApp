@@ -19,14 +19,12 @@ namespace TeamManagementApp.Views.Projects
     public partial class FrmProjects : BaseView, IProjectsView
     {
         #region Properties
-        public FormType ProjectFormType { get; set; }
-        public long CurrentProjectId { get; set; }
         public ICommonTextBox TxtProjectName { get; set; }
         public ICommonComboBox<ProjectStatus, long> CmbStatus { get; set; }
         public ICommonComboBox<Member, long> CmbAssignee { get; set; }
         public ICommonComboBox<ProjectType, long> CmbType { get; set; }
-        public ICommonDateTimePicker DtpDateStart { get; set; }
-        public ICommonDateTimePicker DtpDateEnd { get; set; }
+        public ICommonDateTimePicker DtpStartDate { get; set; }
+        public ICommonDateTimePicker DtpEndDate { get; set; }
         public ICommonRichTextBox RTxtDescription { get; set; }
         public ICommonComboBox<MemberClass, long> CmbMemberClass { get; set; }
         public ICommonComboBox<Member, long> CmbMember { get; set; }
@@ -48,8 +46,8 @@ namespace TeamManagementApp.Views.Projects
             CmbStatus = new WinWrapperComboBox<ProjectStatus, long>(cmbStatus, nameof(ProjectStatus.Status), nameof(ProjectStatus.StatusId));
             CmbAssignee = new WinWrapperComboBox<Member, long>(cmbAssignee, nameof(Member.Name), nameof(Member.MemberId));
             CmbType = new WinWrapperComboBox<ProjectType, long>(cmbType, nameof(ProjectType.Type), nameof(ProjectType.TypeId));
-            DtpDateStart = new WinWrapperDateTimePicker(dtpDateStart);
-            DtpDateEnd = new WinWrapperDateTimePicker(dtpDateEnd);
+            DtpStartDate = new WinWrapperDateTimePicker(dtpDateStart);
+            DtpEndDate = new WinWrapperDateTimePicker(dtpDateEnd);
             RTxtDescription = new WinWrapperRichTextBox(rtxtDescription);
             CmbMemberClass = new WinWrapperComboBox<MemberClass, long>(cmbMemberClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
             CmbMember = new WinWrapperComboBox<Member, long>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));

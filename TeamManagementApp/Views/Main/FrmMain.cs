@@ -192,15 +192,15 @@ namespace TeamManagementApp
         private void mnuAddProject_Click(object sender, EventArgs e)
         {
             var frmProjects = _viewFactory.Create<FrmProjects>();
-            frmProjects.ProjectFormType = FormType.New;
+            frmProjects.Presenter.ProjectFormType = FormType.New;
             CreateOrOpenForm(frmProjects);
         }
 
         private void dgvProjects_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var frmProjects = _viewFactory.Create<FrmProjects>();
-            frmProjects.ProjectFormType = FormType.Edit;
-            frmProjects.CurrentProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
+            frmProjects.Presenter.ProjectFormType = FormType.Edit;
+            frmProjects.Presenter.CurrentProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
             CreateOrOpenForm(frmProjects);
         }
     }
