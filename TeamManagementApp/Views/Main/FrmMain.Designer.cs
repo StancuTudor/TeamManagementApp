@@ -82,6 +82,7 @@
             mnuAddProject.Padding = new Padding(0);
             mnuAddProject.Size = new Size(64, 64);
             mnuAddProject.ToolTipText = "Add project";
+            mnuAddProject.Click += mnuAddProject_Click;
             // 
             // mnuMembers
             // 
@@ -150,6 +151,7 @@
             dgvProjects.Name = "dgvProjects";
             dgvProjects.Size = new Size(984, 558);
             dgvProjects.TabIndex = 1;
+            dgvProjects.CellMouseDoubleClick += dgvProjects_CellMouseDoubleClick;
             // 
             // pnlProjects
             // 

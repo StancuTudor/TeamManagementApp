@@ -11,6 +11,9 @@ using TeamManagementApp.Views;
 using TeamManagementApp.Views.Login;
 using TeamManagementApp.Views.Main;
 using TeamManagementApp.Views.Members;
+using TeamManagementApp.Views.MembersClasses;
+using TeamManagementApp.Views.Projects;
+using TeamManagementApp.Views.Types;
 
 namespace TeamManagementApp
 {
@@ -90,6 +93,11 @@ namespace TeamManagementApp
             services.AddSingleton<ITypesService, TypesService>();
             services.AddSingleton<ITypesRepository, TypesRepository>();
             services.AddTransient<TypesPresenter>();
+
+            // Projects
+            services.AddSingleton<IProjectsService, ProjectsService>();
+            services.AddSingleton<IProjectsRepository, ProjectsRepository>();
+            services.AddTransient<ProjectsPresenter>();
         }
 
         static void RegisterAllViewsAsService(IServiceCollection services)

@@ -1,4 +1,4 @@
-﻿namespace TeamManagementApp.Views.Members
+﻿namespace TeamManagementApp.Views.MembersClasses
 {
     partial class FrmMemberClasses
     {

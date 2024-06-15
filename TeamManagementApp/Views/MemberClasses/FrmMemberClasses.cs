@@ -2,7 +2,7 @@
 using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
 
-namespace TeamManagementApp.Views.Members
+namespace TeamManagementApp.Views.MembersClasses
 {
     public partial class FrmMemberClasses : BaseView, IMemberClassesView
     {

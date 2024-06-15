@@ -4,7 +4,7 @@ using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
 using TeamManagementApp.Utils;
 
-namespace TeamManagementApp.Views.Members
+namespace TeamManagementApp.Views.Types
 {
     public class TypesPresenter
     {

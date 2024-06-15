@@ -1,7 +1,7 @@
 ﻿using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls.Interfaces;
 
-namespace TeamManagementApp.Views.Members
+namespace TeamManagementApp.Views.Types
 {
     public interface ITypesView
     {

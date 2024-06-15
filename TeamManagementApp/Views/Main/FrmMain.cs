@@ -5,6 +5,9 @@ using TeamManagementApp.Utils;
 using TeamManagementApp.Views;
 using TeamManagementApp.Views.Main;
 using TeamManagementApp.Views.Members;
+using TeamManagementApp.Views.MembersClasses;
+using TeamManagementApp.Views.Types;
+using TeamManagementApp.Views.Projects;
 
 namespace TeamManagementApp
 {
@@ -78,8 +81,6 @@ namespace TeamManagementApp
         private bool CheckIfFormIsOpen(Form formToFind, out Form outForm)
         {
             outForm = _openForms.FirstOrDefault(form => form.Text == formToFind.Text);
-            if (outForm is null)
-                outForm = _openForms.FirstOrDefault(form => form.Text == formToFind.Text);
 
             if (outForm != null)
             {
@@ -138,6 +139,12 @@ namespace TeamManagementApp
             await Presenter.FormLoad();
         }
 
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            pnlProjects.Size = this.Size - differenceBetweenFormAndMainPanel;
+            dgvProjects.Size = pnlProjects.Size - differenceBetweenMainPanelAndDGV;
+        }
+
         private async void btnApplyFilters_Click(object sender, EventArgs e)
         {
             await Presenter.ApplyFilters();
@@ -182,10 +189,19 @@ namespace TeamManagementApp
             CreateOrOpenForm(frmMemberClasses);
         }
 
-        private void FrmMain_Resize(object sender, EventArgs e)
+        private void mnuAddProject_Click(object sender, EventArgs e)
         {
-            pnlProjects.Size = this.Size - differenceBetweenFormAndMainPanel;
-            dgvProjects.Size = pnlProjects.Size - differenceBetweenMainPanelAndDGV;
+            var frmProjects = _viewFactory.Create<FrmProjects>();
+            frmProjects.ProjectFormType = FormType.New;
+            CreateOrOpenForm(frmProjects);
+        }
+
+        private void dgvProjects_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var frmProjects = _viewFactory.Create<FrmProjects>();
+            frmProjects.ProjectFormType = FormType.Edit;
+            frmProjects.CurrentProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
+            CreateOrOpenForm(frmProjects);
         }
     }
 }

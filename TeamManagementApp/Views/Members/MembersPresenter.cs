@@ -30,7 +30,7 @@ namespace TeamManagementApp.Views.Members
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show($"{ex.Message}.\r\nYou can't add members.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"{ex.Message}.\r\nYou can't open this menu.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _view.CloseForm();
             }
         }

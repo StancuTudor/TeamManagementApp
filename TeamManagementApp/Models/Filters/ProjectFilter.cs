@@ -1,12 +1,7 @@
-﻿namespace TeamManagementApp.Models.Filters
+﻿using TeamManagementApp.Utils;
+
+namespace TeamManagementApp.Models.Filters
 {
-    public enum Selection
-    {
-        New = -3,
-        Null = -2,
-        Any = -1,
-        Specific = 0
-    }
     public class ProjectFilter
     {
         public Selection ProjectSelection { get; set; } = Selection.Any;
