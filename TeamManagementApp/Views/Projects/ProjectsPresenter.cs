@@ -33,7 +33,7 @@ namespace TeamManagementApp.Views.Projects
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show($"{ex.Message}\r\nYou can't open this menu.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning($"{ex.Message}\r\nYou can't open this menu.");
                 _view.CloseForm();
             }
         }

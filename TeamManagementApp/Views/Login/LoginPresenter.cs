@@ -118,12 +118,12 @@ namespace TeamManagementApp.Views.Login
             {
                 if (currentVersion < minVersion)
                 {
-                    MessageBox.Show("This version is no longer supported. Update needed.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    CustomMessageBox.ShowStop("This version is no longer supported. Update needed.");
                     CloseNotAutorized();
                 }
                 else if (currentVersion != latestVersion)
                 {
-                    MessageBox.Show("This is not the latest app version.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CustomMessageBox.ShowWarning("This is not the latest app version.");
                 }
             }
         }

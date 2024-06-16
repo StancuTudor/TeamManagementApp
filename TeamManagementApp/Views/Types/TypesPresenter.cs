@@ -76,19 +76,19 @@ namespace TeamManagementApp.Views.Types
                 if (type.TypeId == (long)Selection.New)
                     throw new InvalidOperationException("Invalid operation.");
 
-                var result = MessageBox.Show($"Are you sure you want to delete {type.Type}?", "Validation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {type.Type}?");
                 if (result == DialogResult.Yes)
                     await DeleteTypeById(type.TypeId);
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning(ex.Message);
             }
         }
         private async Task DeleteTypeById(long memberId)
         {
             await _typesService.DeleteTypeById(memberId);
-            MessageBox.Show("Type delete succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.ShowInfo("Type delete succesfully.");
             await InitializeTypes();
         }
 
@@ -101,7 +101,7 @@ namespace TeamManagementApp.Views.Types
             else
                 await _typesService.UpdateType(newType);
 
-            MessageBox.Show("Type saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.ShowInfo("Type saved succesfully.");
             await InitializeTypes();
         }
 

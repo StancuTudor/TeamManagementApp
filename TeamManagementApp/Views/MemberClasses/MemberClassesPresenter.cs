@@ -76,19 +76,19 @@ namespace TeamManagementApp.Views.MembersClasses
                 if (memberClass.ClassId == (long)Selection.New)
                     throw new InvalidOperationException("Invalid operation.");
 
-                var result = MessageBox.Show($"Are you sure you want to delete {memberClass.ClassName}?", "Validation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {memberClass.ClassName}?");
                 if (result == DialogResult.Yes)
                     await DeleteMemberClassById(memberClass.ClassId);
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning(ex.Message);
             }
         }
         private async Task DeleteMemberClassById(long memberId)
         {
             await _memberClassesService.DeleteMemberClassById(memberId);
-            MessageBox.Show("Member class delete succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.ShowInfo("Member class delete succesfully.");
             await InitializeMemberClasses();
         }
 
@@ -101,7 +101,7 @@ namespace TeamManagementApp.Views.MembersClasses
             else
                 await _memberClassesService.UpdateMemberClass(newMemberClass);
 
-            MessageBox.Show("Member class saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.ShowInfo("Member class saved succesfully.");
             await InitializeMemberClasses();
         }
 

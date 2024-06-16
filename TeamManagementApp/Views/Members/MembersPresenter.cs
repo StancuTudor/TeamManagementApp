@@ -30,7 +30,7 @@ namespace TeamManagementApp.Views.Members
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show($"{ex.Message}\r\nYou can't open this menu.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning($"{ex.Message}\r\nYou can't open this menu.");
                 _view.CloseForm();
             }
         }
@@ -118,19 +118,19 @@ namespace TeamManagementApp.Views.Members
                 if (member.MemberId == (long)Selection.New)
                     throw new InvalidOperationException("Invalid operation.");
 
-                var result = MessageBox.Show($"Are you sure you want to delete {member.Name}?", "Validation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {member.Name}?");
                 if (result == DialogResult.Yes)
                     await DeleteMemberById(member.MemberId);
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning(ex.Message);
             }
         }
         private async Task DeleteMemberById(long memberId)
         {
             await _membersService.DeleteMemberById(memberId);
-            MessageBox.Show("Member delete succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.ShowInfo("Member delete succesfully.");
             await InitializeMembers();
         }
 
@@ -145,12 +145,12 @@ namespace TeamManagementApp.Views.Members
                 else
                     await _membersService.UpdateMember(newMember);
 
-                MessageBox.Show("Member saved succesfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowInfo("Member saved succesfully.");
                 await InitializeMembers();
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowWarning(ex.Message);
             }
         }
 
