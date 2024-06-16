@@ -17,6 +17,8 @@ namespace TeamManagementApp.Views.Projects
         ICommonComboBox<MemberClass, long> CmbMemberClass { get; set; }
         ICommonComboBox<Member, long> CmbMember { get; set; }
         ICommonListView<long> LvwMembers { get; set; }
+        ICommonButton BtnDelete { get; set; }
+        ICommonButton BtnSave { get; set; }
         void CloseForm();
     }
 }

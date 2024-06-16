@@ -200,7 +200,7 @@ namespace TeamManagementApp
         {
             var frmProjects = _viewFactory.Create<FrmProjects>();
             frmProjects.Presenter.ProjectFormType = FormType.Edit;
-            frmProjects.Presenter.CurrentProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
+            frmProjects.Presenter.CurrentProject.ProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
             CreateOrOpenForm(frmProjects);
         }
     }

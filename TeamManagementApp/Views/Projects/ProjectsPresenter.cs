@@ -12,7 +12,7 @@ namespace TeamManagementApp.Views.Projects
         private readonly ICommonService _commonService;
         private readonly IProjectsService _projectsService;
         public FormType ProjectFormType;
-        public long CurrentProjectId;
+        public Project CurrentProject = new Project();
 
         public ProjectsPresenter(ICommonService commonService, IProjectsService projectsService)
         {
@@ -28,6 +28,7 @@ namespace TeamManagementApp.Views.Projects
         {
             try
             {
+                DisableUnwantedControls();
                 await InitializeControls();
                 await InitializeCurrentProject();
             }
@@ -38,6 +39,18 @@ namespace TeamManagementApp.Views.Projects
             }
         }
 
+        private void DisableUnwantedControls()
+        {
+            if(ProjectFormType == FormType.New)
+            {
+                _view.BtnDelete.Enabled = false;
+            }
+            if(ProjectFormType == FormType.ViewOnly)
+            {
+                _view.BtnDelete.Enabled = false;
+                _view.BtnSave.Enabled = false;
+            }
+        }
         private async Task InitializeControls()
         {
             _view.DtpStartDate.Checked = false;
@@ -96,25 +109,43 @@ namespace TeamManagementApp.Views.Projects
         {
             if (ProjectFormType == FormType.Edit || ProjectFormType == FormType.ViewOnly)
             {
-                Project? projectToLoad = await _projectsService.GetProjectDataById(CurrentProjectId);
-                if (projectToLoad == null)
+                // Validate if the project was deleted.
+                Project? foundProject = await _projectsService.GetProjectDataById(CurrentProject.ProjectId);
+                if (foundProject == null)
                 {
                     throw new ValidationException("Project not found.");
                 }
+                CurrentProject = foundProject;
 
-                _view.TxtProjectName.Text = projectToLoad.ProjectName;
-                _view.CmbStatus.SelectedIndex = _view.CmbStatus.DataSource.ToList().FindIndex(x => x.StatusId == projectToLoad.StatusId);
-                _view.CmbAssignee.SelectedIndex = _view.CmbAssignee.DataSource.ToList().FindIndex(x => x.MemberId == projectToLoad.Assignee);
-                _view.CmbType.SelectedIndex = _view.CmbType.DataSource.ToList().FindIndex(x => x.TypeId == projectToLoad.TypeId);
-                if (projectToLoad.StartDate == null)
+                _view.TxtProjectName.Text = foundProject.ProjectName;
+                _view.CmbStatus.SelectedIndex = _view.CmbStatus.DataSource.ToList().FindIndex(x => x.StatusId == foundProject.StatusId);
+                _view.CmbAssignee.SelectedIndex = _view.CmbAssignee.DataSource.ToList().FindIndex(x => GetValueOfMemberCheck(x.MemberId) == foundProject.Assignee);
+                _view.CmbType.SelectedIndex = _view.CmbType.DataSource.ToList().FindIndex(x => x.TypeId == foundProject.TypeId);
+                if (foundProject.StartDate == null)
                     _view.DtpStartDate.Checked = false;
                 else
-                    _view.DtpStartDate.Value = projectToLoad.StartDate.Value;
-                if (projectToLoad.EndDate == null)
+                    _view.DtpStartDate.Value = foundProject.StartDate.Value;
+                if (foundProject.EndDate == null)
                     _view.DtpEndDate.Checked = false;
                 else
-                    _view.DtpEndDate.Value = projectToLoad.EndDate.Value;
-                _view.RTxtDescription.Text = projectToLoad.Description;
+                    _view.DtpEndDate.Value = foundProject.EndDate.Value;
+                _view.RTxtDescription.Text = foundProject.Description;
+
+                await InitializeMembers();
+            }
+        }
+        private long? GetValueOfMemberCheck(long memberId)
+        {
+            if (memberId == (long)Selection.Null)
+                return null;
+            return memberId;
+        }
+        private async Task InitializeMembers()
+        {
+            var members = await _projectsService.GetMembersOfProject(CurrentProject.ProjectId);
+            foreach (var member in members)
+            {
+                _view.LvwMembers.Add(member.Name, member.MemberId);
             }
         }
 
@@ -124,15 +155,82 @@ namespace TeamManagementApp.Views.Projects
             if(selectedClassId == (long)Selection.Any)
             {
                 var members = await _commonService.GetAllMembers(ActiveSelection.OnlyActive);
-
                 _view.CmbMember.DataSource = new BindingList<Member>(members);
             }
             else
             {
                 var members = await _projectsService.GetMembersByClassId(selectedClassId);
-
                 _view.CmbMember.DataSource = new BindingList<Member>(members);
             }
+        }
+
+        public async Task Save()
+        {
+            var newProject = GetProjectFromControls();
+            var memberList = GetMemberList();
+            if(ProjectFormType == FormType.New)
+            {
+                await _projectsService.InsertNewProject(newProject, memberList);
+            }
+            else
+            {
+                await _projectsService.UpdateProject(newProject, memberList);
+            }
+            CustomMessageBox.ShowInfo("Project saved succesfully.");
+            _view.CloseForm();
+        }
+
+        private Project GetProjectFromControls()
+        {
+            return new Project()
+            {
+                ProjectId = CurrentProject.ProjectId,
+                ProjectName = _view.TxtProjectName.Text,
+                Assignee = _view.CmbAssignee.SelectedValue == (int)Selection.Null ? null : _view.CmbAssignee.SelectedValue,
+                TypeId = _view.CmbType.SelectedValue = _view.CmbType.SelectedValue,
+                StartDate = _view.DtpStartDate.Checked == false ? null : _view.DtpStartDate.Value,
+                EndDate = _view.DtpEndDate.Checked == false ? null : _view.DtpEndDate.Value,
+                Description = _view.RTxtDescription.Text,
+                StatusId = _view.CmbStatus.SelectedValue,
+            };
+        }
+        private List<long> GetMemberList()
+        {
+            var result = new List<long>();
+            foreach (var it in _view.LvwMembers.Items)
+            {
+                result.Add(it.Tag);
+            }
+            return result;
+        }
+
+        public async Task Delete()
+        {
+            var validationResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {CurrentProject.ProjectName}?");
+            if (validationResult == DialogResult.Yes)
+                await _projectsService.DeleteProjectById(CurrentProject.ProjectId);
+            CustomMessageBox.ShowInfo("Project deleted succesfully.");
+            _view.CloseForm();
+        }
+
+        private bool IsMemberInList(long memberId)
+        {
+            foreach (var it in _view.LvwMembers.Items)
+                if (it.Tag == memberId)
+                    return true;
+            return false;
+        }
+        public void AddMember()
+        {
+            if (_view.CmbMember.SelectedIndex == -1)
+                return;
+            if (IsMemberInList(_view.CmbMember.SelectedValue))
+                return;
+            _view.LvwMembers.Add(_view.CmbMember.SelectedItem.Name, _view.CmbMember.SelectedValue);
+        }
+        public void RemoveAllMembers()
+        {
+            _view.LvwMembers.Clear();
         }
     }
 }

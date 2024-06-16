@@ -54,6 +54,7 @@
             cmbMemberClass = new ComboBox();
             btnSave = new Button();
             btnDelete = new Button();
+            colMember = new ColumnHeader();
             gbDetails.SuspendLayout();
             gbMembers.SuspendLayout();
             SuspendLayout();
@@ -239,6 +240,7 @@
             btnEmptyList.TabIndex = 20;
             btnEmptyList.Text = "Remove all";
             btnEmptyList.UseVisualStyleBackColor = true;
+            btnEmptyList.Click += btnEmptyList_Click;
             // 
             // btnAdd
             // 
@@ -249,14 +251,17 @@
             btnAdd.TabIndex = 19;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // lvwMembers
             // 
+            lvwMembers.Columns.AddRange(new ColumnHeader[] { colMember });
             lvwMembers.Location = new Point(9, 120);
             lvwMembers.Name = "lvwMembers";
             lvwMembers.Size = new Size(231, 157);
             lvwMembers.TabIndex = 12;
             lvwMembers.UseCompatibleStateImageBehavior = false;
+            lvwMembers.View = View.Details;
             // 
             // lblMember
             // 
@@ -306,6 +311,7 @@
             btnSave.TabIndex = 18;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnDelete
             // 
@@ -316,6 +322,12 @@
             btnDelete.TabIndex = 19;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // colMember
+            // 
+            colMember.Text = "Members";
+            colMember.Width = 180;
             // 
             // FrmProjects
             // 
@@ -334,6 +346,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmProjects";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Projects";
             Load += FrmProjects_Load;
             gbDetails.ResumeLayout(false);
@@ -371,5 +384,6 @@
         private Button btnDelete;
         private Button btnAdd;
         private Button btnEmptyList;
+        private ColumnHeader colMember;
     }
 }

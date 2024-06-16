@@ -20,7 +20,7 @@ namespace TeamManagementApp.Repositories
         public async Task<List<DetailedProject>> GetFilteredProjects(ProjectFilter filter, List<string> conditions)
         {
             var query = @"select p.ProjectId, p.ProjectName, p.Assignee, 
-                        p.StatusId, p.TypeId, p.StartDate, p.EndDate, 
+                        p.StatusId, p.TypeId, p.StartDate, p.EndDate, p.Description, 
                         m.Name as AssigneeName, s.Status, t.Type
                         from Projects p
                         left join Members m on p.Assignee = m.MemberId

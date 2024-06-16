@@ -29,6 +29,8 @@ namespace TeamManagementApp.Views.Projects
         public ICommonComboBox<MemberClass, long> CmbMemberClass { get; set; }
         public ICommonComboBox<Member, long> CmbMember { get; set; }
         public ICommonListView<long> LvwMembers { get; set; }
+        public ICommonButton BtnDelete { get; set; }
+        public ICommonButton BtnSave { get; set; }
         #endregion
         public ProjectsPresenter Presenter { get; private set; }
         public FrmProjects(ProjectsPresenter presenter)
@@ -52,6 +54,8 @@ namespace TeamManagementApp.Views.Projects
             CmbMemberClass = new WinWrapperComboBox<MemberClass, long>(cmbMemberClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
             CmbMember = new WinWrapperComboBox<Member, long>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));
             LvwMembers = new WinWrapperListView<long>(lvwMembers);
+            BtnDelete = new WinWrapperButton(btnDelete);
+            BtnSave = new WinWrapperButton(btnSave);
         }
 
         private async void FrmProjects_Load(object sender, EventArgs e)
@@ -83,6 +87,26 @@ namespace TeamManagementApp.Views.Projects
         private async void cmbMemberClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Presenter.SelectMembersByClass();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await Presenter.Save();
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            await Presenter.Delete();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Presenter.AddMember();
+        }
+
+        private void btnEmptyList_Click(object sender, EventArgs e)
+        {
+            Presenter.RemoveAllMembers();
         }
     }
 }
