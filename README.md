@@ -17,12 +17,12 @@ Main menu - List of projects with filters
 
 Create project menu
 
-![Projects](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/e18412fd-fb6a-4d41-9bd2-c8ae950e8dd3)
+![Projects](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/1060d1a6-1b06-4306-acfc-dd504c491000)
 
 
 DB diagram
 
-![TeamManagementApp_DB-Diagram](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/761fb34d-bc44-4b4b-9d7d-8093441781f3)
+![TeamManagementApp_DB-Diagram](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/445f9c21-3df4-4e5c-befb-98ee19b73f77)
 
 
 Installation
