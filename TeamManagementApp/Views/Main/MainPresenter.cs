@@ -249,5 +249,17 @@ namespace TeamManagementApp.Views.Main
             _view.TxtProjectFilter.Text = string.Empty;
             await InitializeFilters();
         }
+        public async Task RefreshProjectsList()
+        {
+            var initialProjects = _sourceDgvProjects.Select(x => x.ProjectId).ToList();
+            var refreshedProjects = await _mainService.GetProjectsById(initialProjects);
+
+            // Refresh view
+            _sourceDgvProjects.Clear();
+            foreach (var project in refreshedProjects)
+            {
+                _sourceDgvProjects.Add(new DisplayedProject(project));
+            }
+        }
     }
 }

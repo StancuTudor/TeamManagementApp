@@ -108,5 +108,24 @@ namespace TeamManagementApp.Views.Projects
         {
             Presenter.RemoveAllMembers();
         }
+
+        private void lvwMembers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Presenter.RemoveMember();
+        }
+
+        private void lvwMembers_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if(lvwMembers.SelectedItems.Count > 0)
+                    mnuMembers.Show(lvwMembers, e.Location);
+            }
+        }
+
+        private void mnuRemoveMember_Click(object sender, EventArgs e)
+        {
+            Presenter.RemoveMember();
+        }
     }
 }

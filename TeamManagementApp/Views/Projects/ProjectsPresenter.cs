@@ -166,18 +166,37 @@ namespace TeamManagementApp.Views.Projects
 
         public async Task Save()
         {
-            var newProject = GetProjectFromControls();
-            var memberList = GetMemberList();
-            if(ProjectFormType == FormType.New)
+            try
             {
-                await _projectsService.InsertNewProject(newProject, memberList);
+                var newProject = GetProjectFromControls();
+                ValidateSaveProject(newProject);
+
+                var memberList = GetMemberList();
+                if (ProjectFormType == FormType.New)
+                {
+                    await _projectsService.InsertNewProject(newProject, memberList);
+                }
+                else
+                {
+                    await _projectsService.UpdateProject(newProject, memberList);
+                }
+                CustomMessageBox.ShowInfo("Project saved succesfully.");
+                _view.CloseForm();
             }
-            else
+            catch (ValidationException ex)
             {
-                await _projectsService.UpdateProject(newProject, memberList);
+                CustomMessageBox.ShowWarning(ex.Message);
             }
-            CustomMessageBox.ShowInfo("Project saved succesfully.");
-            _view.CloseForm();
+        }
+
+        private void ValidateSaveProject(Project newProject)
+        {
+            if (string.IsNullOrEmpty(newProject.ProjectName))
+                throw new ValidationException("Project name can't be empty.");
+
+            if (_view.DtpStartDate.Checked && _view.DtpEndDate.Checked)
+                if (_view.DtpStartDate.Value > _view.DtpEndDate.Value)
+                    throw new ValidationException("Incorrect period.");
         }
 
         private Project GetProjectFromControls()
@@ -231,6 +250,14 @@ namespace TeamManagementApp.Views.Projects
         public void RemoveAllMembers()
         {
             _view.LvwMembers.Clear();
+        }
+        public void RemoveMember()
+        {
+            while (_view.LvwMembers.SelectedItems.Count > 0)
+            {
+                var selectedIndex = _view.LvwMembers.SelectedItems[0].Index;
+                _view.LvwMembers.Remove(selectedIndex);
+            }
         }
     }
 }

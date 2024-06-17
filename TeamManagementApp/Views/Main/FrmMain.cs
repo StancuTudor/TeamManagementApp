@@ -127,10 +127,13 @@ namespace TeamManagementApp
                     activeChildren[0].Item1.Focus();
             }
         }
-        private void FormOnClose(object sender, FormClosedEventArgs e)
+        private async void FormOnClose(object sender, FormClosedEventArgs e)
         {
             var frm = sender as Form;
             _openForms.Remove(frm);
+
+            await Presenter.RefreshFilters();
+            await Presenter.RefreshProjectsList();
         }
         #endregion
 
@@ -169,6 +172,11 @@ namespace TeamManagementApp
         private async void btnRefreshFilters_Click(object sender, EventArgs e)
         {
             await Presenter.RefreshFilters();
+        }
+
+        private async void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            await Presenter.RefreshProjectsList();
         }
 
         private void mnuConfigMembers_Click(object sender, EventArgs e)

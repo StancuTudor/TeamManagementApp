@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProjects));
             lblProject = new Label();
             cmbAssignee = new ComboBox();
@@ -48,15 +49,18 @@
             btnEmptyList = new Button();
             btnAdd = new Button();
             lvwMembers = new ListView();
+            colMember = new ColumnHeader();
             lblMember = new Label();
             cmbMember = new ComboBox();
             lblMemberClass = new Label();
             cmbMemberClass = new ComboBox();
             btnSave = new Button();
             btnDelete = new Button();
-            colMember = new ColumnHeader();
+            mnuMembers = new ContextMenuStrip(components);
+            mnuRemoveMember = new ToolStripMenuItem();
             gbDetails.SuspendLayout();
             gbMembers.SuspendLayout();
+            mnuMembers.SuspendLayout();
             SuspendLayout();
             // 
             // lblProject
@@ -82,6 +86,7 @@
             // 
             txtProjectName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtProjectName.Location = new Point(114, 12);
+            txtProjectName.MaxLength = 255;
             txtProjectName.Name = "txtProjectName";
             txtProjectName.Size = new Size(363, 27);
             txtProjectName.TabIndex = 2;
@@ -89,6 +94,7 @@
             // rtxtDescription
             // 
             rtxtDescription.Location = new Point(6, 182);
+            rtxtDescription.MaxLength = 255;
             rtxtDescription.Name = "rtxtDescription";
             rtxtDescription.Size = new Size(459, 96);
             rtxtDescription.TabIndex = 3;
@@ -256,12 +262,20 @@
             // lvwMembers
             // 
             lvwMembers.Columns.AddRange(new ColumnHeader[] { colMember });
+            lvwMembers.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lvwMembers.Location = new Point(9, 120);
             lvwMembers.Name = "lvwMembers";
             lvwMembers.Size = new Size(231, 157);
             lvwMembers.TabIndex = 12;
             lvwMembers.UseCompatibleStateImageBehavior = false;
             lvwMembers.View = View.Details;
+            lvwMembers.MouseDoubleClick += lvwMembers_MouseDoubleClick;
+            lvwMembers.MouseUp += lvwMembers_MouseUp;
+            // 
+            // colMember
+            // 
+            colMember.Text = "Members";
+            colMember.Width = 180;
             // 
             // lblMember
             // 
@@ -324,10 +338,18 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // colMember
+            // mnuMembers
             // 
-            colMember.Text = "Members";
-            colMember.Width = 180;
+            mnuMembers.Items.AddRange(new ToolStripItem[] { mnuRemoveMember });
+            mnuMembers.Name = "mnuMembers";
+            mnuMembers.Size = new Size(118, 26);
+            // 
+            // mnuRemoveMember
+            // 
+            mnuRemoveMember.Name = "mnuRemoveMember";
+            mnuRemoveMember.Size = new Size(117, 22);
+            mnuRemoveMember.Text = "Remove";
+            mnuRemoveMember.Click += mnuRemoveMember_Click;
             // 
             // FrmProjects
             // 
@@ -353,6 +375,7 @@
             gbDetails.PerformLayout();
             gbMembers.ResumeLayout(false);
             gbMembers.PerformLayout();
+            mnuMembers.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -385,5 +408,7 @@
         private Button btnAdd;
         private Button btnEmptyList;
         private ColumnHeader colMember;
+        private ContextMenuStrip mnuMembers;
+        private ToolStripMenuItem mnuRemoveMember;
     }
 }

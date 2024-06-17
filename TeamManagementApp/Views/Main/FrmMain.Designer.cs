@@ -56,6 +56,7 @@
             lblLoggedInUser = new ToolStripStatusLabel();
             lblConnectedServer = new ToolStripStatusLabel();
             lblAppVersion = new ToolStripStatusLabel();
+            btnRefreshList = new Button();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
@@ -155,6 +156,7 @@
             // 
             // pnlProjects
             // 
+            pnlProjects.Controls.Add(btnRefreshList);
             pnlProjects.Controls.Add(btnRefreshFilters);
             pnlProjects.Controls.Add(btnEmptyList);
             pnlProjects.Controls.Add(btnAddToList);
@@ -323,6 +325,17 @@
             lblAppVersion.Size = new Size(88, 20);
             lblAppVersion.Text = "App version";
             // 
+            // btnRefreshList
+            // 
+            btnRefreshList.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefreshList.Location = new Point(733, 37);
+            btnRefreshList.Name = "btnRefreshList";
+            btnRefreshList.Size = new Size(121, 30);
+            btnRefreshList.TabIndex = 14;
+            btnRefreshList.Text = "Refresh list";
+            btnRefreshList.UseVisualStyleBackColor = true;
+            btnRefreshList.Click += btnRefreshList_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -377,5 +390,6 @@
         private ToolStripStatusLabel lblLoggedInUser;
         private ToolStripStatusLabel lblConnectedServer;
         private ToolStripStatusLabel lblAppVersion;
+        private Button btnRefreshList;
     }
 }
