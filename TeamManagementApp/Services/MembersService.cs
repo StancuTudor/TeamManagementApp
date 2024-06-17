@@ -33,7 +33,7 @@ namespace TeamManagementApp.Services
 
         public async Task InsertNewMember(Member member)
         {
-            if(member.UserId != null)
+            if (member.UserId != null)
                 await _usersRepository.RemoveMemberUserId(member.UserId.Value);
             await _membersRepository.InsertNewMember(member);
         }

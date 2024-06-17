@@ -1,7 +1,7 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Utils.CommonControls.Interfaces;
 using TeamManagementApp.Utils;
 
-namespace TeamManagementApp.Util.CommonControls
+namespace TeamManagementApp.Utils.CommonControls
 {
     /// <summary>
     /// Creates a basic wrapper for DateTimePicker.

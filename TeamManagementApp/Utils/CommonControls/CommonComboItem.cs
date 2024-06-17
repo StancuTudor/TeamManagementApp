@@ -1,4 +1,4 @@
-﻿namespace TeamManagementApp.Util.CommonControls
+﻿namespace TeamManagementApp.Utils.CommonControls
 {
     public class CommonComboItem
     {

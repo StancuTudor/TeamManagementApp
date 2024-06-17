@@ -1,6 +1,6 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Utils.CommonControls.Interfaces;
 
-namespace TeamManagementApp.Util.CommonControls
+namespace TeamManagementApp.Utils.CommonControls
 {
     /// <summary>
     /// Creates a basic wrapper for Form.

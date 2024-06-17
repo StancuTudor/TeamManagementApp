@@ -105,12 +105,12 @@ namespace TeamManagementApp.Views.Users
             {
                 FillForNewUser();
             }
-            if(_view.RbUsername.Checked && _view.CmbSearchUsername.SelectedIndex != -1)
+            if (_view.RbUsername.Checked && _view.CmbSearchUsername.SelectedIndex != -1)
             {
                 var selectedUser = _view.CmbSearchUsername.SelectedItem;
                 FillForSelectedUser(selectedUser);
             }
-            if(_view.RbMember.Checked && _view.CmbSearchMember.SelectedIndex != -1)
+            if (_view.RbMember.Checked && _view.CmbSearchMember.SelectedIndex != -1)
             {
                 var selectedUser = _view.CmbSearchMember.SelectedItem;
                 FillForSelectedUser(selectedUser);
@@ -140,15 +140,15 @@ namespace TeamManagementApp.Views.Users
             {
                 return new MemberAndUser() { UserId = (long)Selection.New };
             }
-            if(_view.RbUsername.Checked)
+            if (_view.RbUsername.Checked)
             {
-                if(_view.CmbSearchUsername.SelectedIndex == -1)
+                if (_view.CmbSearchUsername.SelectedIndex == -1)
                     throw new ValidationException("User not selected.");
                 return _view.CmbSearchUsername.SelectedItem;
             }
-            if(_view.RbMember.Checked)
+            if (_view.RbMember.Checked)
             {
-                if(_view.CmbSearchMember.SelectedIndex == -1)
+                if (_view.CmbSearchMember.SelectedIndex == -1)
                     throw new ValidationException("User not selected.");
                 return _view.CmbSearchMember.SelectedItem;
             }
@@ -164,7 +164,7 @@ namespace TeamManagementApp.Views.Users
                     await _usersService.ResetPasswordOfUser(selectedUser.UserId);
                 CustomMessageBox.ShowInfo("Password reset succesfully.");
             }
-            catch(ValidationException ex)
+            catch (ValidationException ex)
             {
                 CustomMessageBox.ShowWarning(ex.Message);
             }
@@ -176,7 +176,7 @@ namespace TeamManagementApp.Views.Users
             {
                 var selectedUser = GetSelectedUser();
                 var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
-                if(validateResult == DialogResult.Yes)
+                if (validateResult == DialogResult.Yes)
                     await _usersService.DeleteUser(selectedUser.UserId);
                 CustomMessageBox.ShowInfo("User deleted succesfully.");
                 await InitializeControls();
@@ -198,7 +198,7 @@ namespace TeamManagementApp.Views.Users
             try
             {
                 var newUser = GetUserModelFromControls();
-                if(newUser.UserId == (long)Selection.New)
+                if (newUser.UserId == (long)Selection.New)
                     await _usersService.InsertNewUser(newUser);
                 else
                     await _usersService.UpdateUser(newUser);

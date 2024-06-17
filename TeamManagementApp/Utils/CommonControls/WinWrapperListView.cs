@@ -1,7 +1,7 @@
-﻿using TeamManagementApp.Util.CommonControls.Interfaces;
+﻿using TeamManagementApp.Utils.CommonControls.Interfaces;
 using static System.Windows.Forms.ListViewItem;
 
-namespace TeamManagementApp.Util.CommonControls
+namespace TeamManagementApp.Utils.CommonControls
 {
     /// <summary>
     /// Creates a base wrapper for ListView with few properties.

@@ -1,6 +1,6 @@
 using TeamManagementApp.Models;
-using TeamManagementApp.Util.CommonControls;
-using TeamManagementApp.Util.CommonControls.Interfaces;
+using TeamManagementApp.Utils.CommonControls;
+using TeamManagementApp.Utils.CommonControls.Interfaces;
 using TeamManagementApp.Utils;
 using TeamManagementApp.Views;
 using TeamManagementApp.Views.Main;

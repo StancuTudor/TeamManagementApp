@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TeamManagementApp.Util.CommonControls.Interfaces
+namespace TeamManagementApp.Utils.CommonControls.Interfaces
 {
     public interface ICommonComboBox<T, U>
     {
