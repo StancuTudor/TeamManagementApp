@@ -1,7 +1,6 @@
 ﻿using TeamManagementApp.Models;
 using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Repositories;
-using TeamManagementApp.Utils;
 
 namespace TeamManagementApp.Services
 {
@@ -35,7 +34,7 @@ namespace TeamManagementApp.Services
             foreach (var projectId in projectIds)
             {
                 var project = await _mainRepository.GetProjectById(projectId);
-                if(project != null)
+                if (project != null)
                     result.Add(project);
             }
             return result;

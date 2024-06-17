@@ -3,7 +3,6 @@ using Npgsql;
 using System.Data;
 using TeamManagementApp.Models;
 using TeamManagementApp.Options;
-using TeamManagementApp.Utils;
 
 namespace TeamManagementApp
 {
@@ -29,9 +28,10 @@ namespace TeamManagementApp
         public ServerConfigModel GetServerConfig()
         {
             var sqlConnection = new NpgsqlConnection(_options.DbConnectionMain);
-            return new ServerConfigModel() { 
-                Server = sqlConnection.DataSource, 
-                Database = sqlConnection.Database 
+            return new ServerConfigModel()
+            {
+                Server = sqlConnection.DataSource,
+                Database = sqlConnection.Database
             };
         }
     }

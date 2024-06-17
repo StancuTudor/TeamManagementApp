@@ -6,8 +6,8 @@ using TeamManagementApp.Views;
 using TeamManagementApp.Views.Main;
 using TeamManagementApp.Views.Members;
 using TeamManagementApp.Views.MembersClasses;
-using TeamManagementApp.Views.Types;
 using TeamManagementApp.Views.Projects;
+using TeamManagementApp.Views.Types;
 
 namespace TeamManagementApp
 {

@@ -48,7 +48,7 @@ namespace TeamManagementApp.Services
         public async Task UpdateProject(Project updatedProject, List<long> members)
         {
             await _projectsRepository.UpdateProject(updatedProject);
-            await ManageProjectMembers(updatedProject.ProjectId,  members);
+            await ManageProjectMembers(updatedProject.ProjectId, members);
         }
         private async Task ManageProjectMembers(long projectId, List<long> members)
         {

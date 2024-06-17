@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeamManagementApp.Models;
+﻿using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls;
 using TeamManagementApp.Util.CommonControls.Interfaces;
-using TeamManagementApp.Utils;
 using TeamManagementApp.Utils.CommonControls;
 using TeamManagementApp.Utils.CommonControls.Interfaces;
 
@@ -118,7 +108,7 @@ namespace TeamManagementApp.Views.Projects
         {
             if (e.Button == MouseButtons.Right)
             {
-                if(lvwMembers.SelectedItems.Count > 0)
+                if (lvwMembers.SelectedItems.Count > 0)
                     mnuMembers.Show(lvwMembers, e.Location);
             }
         }

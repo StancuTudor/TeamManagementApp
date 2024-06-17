@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using TeamManagementApp.Models;
-using TeamManagementApp.Models.Filters;
 using TeamManagementApp.Services;
 using TeamManagementApp.Utils;
 
@@ -41,11 +40,11 @@ namespace TeamManagementApp.Views.Projects
 
         private void DisableUnwantedControls()
         {
-            if(ProjectFormType == FormType.New)
+            if (ProjectFormType == FormType.New)
             {
                 _view.BtnDelete.Enabled = false;
             }
-            if(ProjectFormType == FormType.ViewOnly)
+            if (ProjectFormType == FormType.ViewOnly)
             {
                 _view.BtnDelete.Enabled = false;
                 _view.BtnSave.Enabled = false;
@@ -152,7 +151,7 @@ namespace TeamManagementApp.Views.Projects
         public async Task SelectMembersByClass()
         {
             var selectedClassId = _view.CmbMemberClass.SelectedValue;
-            if(selectedClassId == (long)Selection.Any)
+            if (selectedClassId == (long)Selection.Any)
             {
                 var members = await _commonService.GetAllMembers(ActiveSelection.OnlyActive);
                 _view.CmbMember.DataSource = new BindingList<Member>(members);

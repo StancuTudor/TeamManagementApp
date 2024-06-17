@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
-using System.Reflection;
+﻿using System.Reflection;
 using TeamManagementApp.Models;
 using TeamManagementApp.Services;
 using TeamManagementApp.Utils;

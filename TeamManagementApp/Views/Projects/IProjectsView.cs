@@ -1,6 +1,5 @@
 ﻿using TeamManagementApp.Models;
 using TeamManagementApp.Util.CommonControls.Interfaces;
-using TeamManagementApp.Utils;
 using TeamManagementApp.Utils.CommonControls.Interfaces;
 
 namespace TeamManagementApp.Views.Projects
