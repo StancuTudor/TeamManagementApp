@@ -133,5 +133,77 @@ namespace TeamManagementApp.Views.Users
                 return null;
             return memberId;
         }
+
+        private MemberAndUser GetSelectedUser()
+        {
+            if (_view.RbNewUser.Checked)
+            {
+                return new MemberAndUser() { UserId = (long)Selection.New };
+            }
+            if(_view.RbUsername.Checked)
+            {
+                if(_view.CmbSearchUsername.SelectedIndex == -1)
+                    throw new ValidationException("User not selected.");
+                return _view.CmbSearchUsername.SelectedItem;
+            }
+            if(_view.RbMember.Checked)
+            {
+                if(_view.CmbSearchMember.SelectedIndex == -1)
+                    throw new ValidationException("User not selected.");
+                return _view.CmbSearchMember.SelectedItem;
+            }
+            throw new ValidationException("Invalid selection.");
+        }
+        public async Task ResetPasswordOfUser()
+        {
+            try
+            {
+                var selectedUser = GetSelectedUser();
+                var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
+                if (validateResult == DialogResult.Yes)
+                    await _usersService.ResetPasswordOfUser(selectedUser.UserId);
+            }
+            catch(ValidationException ex)
+            {
+                CustomMessageBox.ShowWarning(ex.Message);
+            }
+        }
+
+        public async Task DeleteUser()
+        {
+            try
+            {
+                var selectedUser = GetSelectedUser();
+                var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
+                if(validateResult == DialogResult.Yes)
+                    await _usersService.DeleteUser(selectedUser.UserId);
+            }
+            catch (ValidationException ex)
+            {
+                CustomMessageBox.ShowWarning(ex.Message);
+            }
+        }
+        private UserLogin GetUserModelFromControls()
+        {
+            var selectedUser = GetSelectedUser();
+            selectedUser.Username = _view.TxtUserUsername.Text;
+            selectedUser.MemberId = _view.CmbUserMember.SelectedValue == (long)Selection.Null ? null : _view.CmbUserMember.SelectedValue;
+            return selectedUser;
+        }
+        public async Task SaveUser()
+        {
+            try
+            {
+                var newUser = GetUserModelFromControls();
+                if(newUser.UserId == (long)Selection.New)
+                    await _usersService.InsertNewUser(newUser);
+                else
+                    await _usersService.UpdateUser(newUser);
+            }
+            catch (ValidationException ex)
+            {
+                CustomMessageBox.ShowWarning(ex.Message);
+            }
+        }
     }
 }

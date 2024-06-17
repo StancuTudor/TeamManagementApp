@@ -7,6 +7,10 @@ namespace TeamManagementApp.Services
     {
         Task<List<MemberAndUser>> GetAllUsersUsername();
         Task<List<MemberAndUser>> GetAllUsersMember();
+        Task ResetPasswordOfUser(long userId);
+        Task DeleteUser(long userId);
+        Task InsertNewUser(UserLogin userLogin);
+        Task UpdateUser(UserLogin userLogin);
     }
     public class UsersService : IUsersService
     {
@@ -23,6 +27,29 @@ namespace TeamManagementApp.Services
         public async Task<List<MemberAndUser>> GetAllUsersMember()
         {
             return await _usersRepository.GetAllUsersMember();
+        }
+        public async Task ResetPasswordOfUser(long userId)
+        {
+            await _usersRepository.ResetPasswordOfUser(userId);
+        }
+        public async Task DeleteUser(long userId)
+        {
+            await _usersRepository.DeleteUser(userId);
+        }
+        public async Task InsertNewUser(UserLogin userId)
+        {
+            userId.UserId = await _usersRepository.InsertNewUser(userId);
+            if (userId.MemberId != null)
+            {
+                await _usersRepository.UpdateMemberUser(userId);
+            }
+        }
+        public async Task UpdateUser(UserLogin userId)
+        {
+            await _usersRepository.UpdateUser(userId);
+
+            await _usersRepository.RemoveMemberUserId(userId.UserId);
+            await _usersRepository.UpdateMemberUser(userId);
         }
     }
 }

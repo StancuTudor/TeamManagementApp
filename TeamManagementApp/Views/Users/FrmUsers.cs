@@ -69,5 +69,20 @@ namespace TeamManagementApp.Views.Users
         {
             Presenter.FillForSelectedUser();
         }
+
+        private async void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            await Presenter.ResetPasswordOfUser();
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            await Presenter.DeleteUser();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await Presenter.SaveUser();
+        }
     }
 }

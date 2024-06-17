@@ -107,6 +107,7 @@
             btnResetPassword.TabIndex = 23;
             btnResetPassword.Text = "Reset password";
             btnResetPassword.UseVisualStyleBackColor = true;
+            btnResetPassword.Click += btnResetPassword_Click;
             // 
             // lblUsername
             // 
@@ -190,6 +191,7 @@
             btnSave.TabIndex = 28;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnDelete
             // 
@@ -200,6 +202,7 @@
             btnDelete.TabIndex = 27;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // FrmUsers
             // 
