@@ -41,6 +41,7 @@ namespace TeamManagementApp.Views.Users
             if (users.Count == 0)
                 _view.RbUsername.Enabled = false;
             _view.CmbSearchUsername.DataSource = new BindingList<MemberAndUser>(users);
+            _view.CmbSearchUsername.SelectedIndex = -1;
         }
 
         private async Task InitializeSearchMembers()
@@ -49,6 +50,7 @@ namespace TeamManagementApp.Views.Users
             if (users.Count == 0)
                 _view.RbMember.Enabled = false;
             _view.CmbSearchMember.DataSource = new BindingList<MemberAndUser>(users);
+            _view.CmbSearchMember.SelectedIndex = -1;
         }
 
         private async Task InitializeUserMembers()
@@ -206,6 +208,10 @@ namespace TeamManagementApp.Views.Users
                 await InitializeControls();
             }
             catch (ValidationException ex)
+            {
+                CustomMessageBox.ShowWarning(ex.Message);
+            }
+            catch (InvalidOperationException ex)
             {
                 CustomMessageBox.ShowWarning(ex.Message);
             }

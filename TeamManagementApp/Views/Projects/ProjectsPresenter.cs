@@ -160,6 +160,8 @@ namespace TeamManagementApp.Views.Projects
             {
                 var members = await _projectsService.GetMembersByClassId(selectedClassId);
                 _view.CmbMember.DataSource = new BindingList<Member>(members);
+                if (members.Count == 0)
+                    _view.CmbMember.Text = string.Empty;
             }
         }
 

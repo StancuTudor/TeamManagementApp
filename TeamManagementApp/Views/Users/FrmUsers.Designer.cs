@@ -217,6 +217,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmUsers";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Configure users";
             Load += FrmUsers_Load;
             gbUser.ResumeLayout(false);

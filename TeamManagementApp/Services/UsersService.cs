@@ -38,10 +38,17 @@ namespace TeamManagementApp.Services
         }
         public async Task InsertNewUser(UserLogin userId)
         {
-            userId.UserId = await _usersRepository.InsertNewUser(userId);
-            if (userId.MemberId != null)
+            try
             {
-                await _usersRepository.UpdateMemberUser(userId);
+                userId.UserId = await _usersRepository.InsertNewUser(userId);
+                if (userId.MemberId != null)
+                {
+                    await _usersRepository.UpdateMemberUser(userId);
+                }
+            }
+            catch (Npgsql.NpgsqlException)
+            {
+                throw new InvalidOperationException("Username already exists.");
             }
         }
         public async Task UpdateUser(UserLogin userId)
