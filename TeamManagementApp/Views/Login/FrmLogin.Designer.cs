@@ -41,10 +41,10 @@
             // 
             // btnLogin
             // 
-            btnLogin.Font = new Font("Microsoft Sans Serif", 8.25F);
-            btnLogin.Location = new Point(105, 90);
+            btnLogin.Font = new Font("Microsoft Sans Serif", 11.25F);
+            btnLogin.Location = new Point(119, 97);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 25);
+            btnLogin.Size = new Size(86, 29);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -52,59 +52,59 @@
             // 
             // txtUsername
             // 
-            txtUsername.Font = new Font("Microsoft Sans Serif", 8.25F);
-            txtUsername.Location = new Point(105, 32);
+            txtUsername.Font = new Font("Microsoft Sans Serif", 11.25F);
+            txtUsername.Location = new Point(119, 38);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(212, 20);
+            txtUsername.Size = new Size(265, 24);
             txtUsername.TabIndex = 1;
             txtUsername.KeyUp += textBox_KeyUp;
             // 
             // lblIntorduceti
             // 
             lblIntorduceti.AutoSize = true;
-            lblIntorduceti.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
-            lblIntorduceti.Location = new Point(107, 9);
+            lblIntorduceti.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblIntorduceti.Location = new Point(88, 9);
             lblIntorduceti.Name = "lblIntorduceti";
-            lblIntorduceti.Size = new Size(181, 13);
+            lblIntorduceti.Size = new Size(242, 18);
             lblIntorduceti.TabIndex = 6;
             lblIntorduceti.Text = "Enter username and password.";
             // 
             // lblUser
             // 
             lblUser.AutoSize = true;
-            lblUser.Font = new Font("Microsoft Sans Serif", 8.25F);
-            lblUser.Location = new Point(43, 35);
+            lblUser.Font = new Font("Microsoft Sans Serif", 11.25F);
+            lblUser.Location = new Point(36, 41);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(55, 13);
+            lblUser.Size = new Size(77, 18);
             lblUser.TabIndex = 9;
             lblUser.Text = "Username";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Font = new Font("Microsoft Sans Serif", 8.25F);
-            lblPassword.Location = new Point(43, 61);
+            lblPassword.Font = new Font("Microsoft Sans Serif", 11.25F);
+            lblPassword.Location = new Point(36, 70);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(53, 13);
+            lblPassword.Size = new Size(75, 18);
             lblPassword.TabIndex = 10;
             lblPassword.Text = "Password";
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Microsoft Sans Serif", 8.25F);
-            txtPassword.Location = new Point(105, 61);
+            txtPassword.Font = new Font("Microsoft Sans Serif", 11.25F);
+            txtPassword.Location = new Point(119, 67);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(212, 20);
+            txtPassword.Size = new Size(265, 24);
             txtPassword.TabIndex = 2;
             txtPassword.KeyUp += textBox_KeyUp;
             // 
             // btnCancel
             // 
-            btnCancel.Font = new Font("Microsoft Sans Serif", 8.25F);
-            btnCancel.Location = new Point(186, 90);
+            btnCancel.Font = new Font("Microsoft Sans Serif", 11.25F);
+            btnCancel.Location = new Point(211, 97);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 25);
+            btnCancel.Size = new Size(86, 29);
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -113,18 +113,18 @@
             // lblError
             // 
             lblError.AutoSize = true;
-            lblError.Font = new Font("Microsoft Sans Serif", 8.25F);
+            lblError.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(20, 118);
+            lblError.Location = new Point(20, 131);
             lblError.Name = "lblError";
-            lblError.Size = new Size(0, 13);
+            lblError.Size = new Size(0, 18);
             lblError.TabIndex = 11;
             // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(375, 138);
+            ClientSize = new Size(441, 158);
             Controls.Add(lblError);
             Controls.Add(btnCancel);
             Controls.Add(txtPassword);
