@@ -40,6 +40,7 @@
             mnuConfigUsers = new ToolStripMenuItem();
             dgvProjects = new DataGridView();
             pnlProjects = new Panel();
+            btnRefreshList = new Button();
             btnRefreshFilters = new Button();
             btnEmptyList = new Button();
             btnAddToList = new Button();
@@ -56,7 +57,6 @@
             lblLoggedInUser = new ToolStripStatusLabel();
             lblConnectedServer = new ToolStripStatusLabel();
             lblAppVersion = new ToolStripStatusLabel();
-            btnRefreshList = new Button();
             StripMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProjects).BeginInit();
             pnlProjects.SuspendLayout();
@@ -139,8 +139,9 @@
             // mnuConfigUsers
             // 
             mnuConfigUsers.Name = "mnuConfigUsers";
-            mnuConfigUsers.Size = new Size(157, 22);
+            mnuConfigUsers.Size = new Size(180, 22);
             mnuConfigUsers.Text = "Configure users";
+            mnuConfigUsers.Click += mnuConfigUsers_Click;
             // 
             // dgvProjects
             // 
@@ -174,6 +175,17 @@
             pnlProjects.Name = "pnlProjects";
             pnlProjects.Size = new Size(984, 633);
             pnlProjects.TabIndex = 2;
+            // 
+            // btnRefreshList
+            // 
+            btnRefreshList.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefreshList.Location = new Point(733, 37);
+            btnRefreshList.Name = "btnRefreshList";
+            btnRefreshList.Size = new Size(121, 30);
+            btnRefreshList.TabIndex = 14;
+            btnRefreshList.Text = "Refresh list";
+            btnRefreshList.UseVisualStyleBackColor = true;
+            btnRefreshList.Click += btnRefreshList_Click;
             // 
             // btnRefreshFilters
             // 
@@ -324,17 +336,6 @@
             lblAppVersion.Name = "lblAppVersion";
             lblAppVersion.Size = new Size(88, 20);
             lblAppVersion.Text = "App version";
-            // 
-            // btnRefreshList
-            // 
-            btnRefreshList.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRefreshList.Location = new Point(733, 37);
-            btnRefreshList.Name = "btnRefreshList";
-            btnRefreshList.Size = new Size(121, 30);
-            btnRefreshList.TabIndex = 14;
-            btnRefreshList.Text = "Refresh list";
-            btnRefreshList.UseVisualStyleBackColor = true;
-            btnRefreshList.Click += btnRefreshList_Click;
             // 
             // FrmMain
             // 

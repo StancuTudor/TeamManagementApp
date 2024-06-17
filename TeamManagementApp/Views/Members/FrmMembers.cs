@@ -28,7 +28,7 @@ namespace TeamManagementApp.Views.Members
             CmbMembers = new WinWrapperComboBox<Member, long>(cmbMember, nameof(Member.Name), nameof(Member.MemberId));
             TxtMemberDetails = new WinWrapperTextBox(txtMemberDetails);
             CmbClass = new WinWrapperComboBox<MemberClass, long>(cmbClass, nameof(MemberClass.ClassName), nameof(MemberClass.ClassId));
-            CmbUser = new WinWrapperComboBox<UserLogin, long>(cmbUser, nameof(UserLogin.UserName), nameof(UserLogin.UserId));
+            CmbUser = new WinWrapperComboBox<UserLogin, long>(cmbUser, nameof(UserLogin.Username), nameof(UserLogin.UserId));
             ChkActive = new WinWrapperCheckBox(chkActive);
         }
 

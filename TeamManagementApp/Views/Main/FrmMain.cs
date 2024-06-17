@@ -8,6 +8,7 @@ using TeamManagementApp.Views.Members;
 using TeamManagementApp.Views.MembersClasses;
 using TeamManagementApp.Views.Projects;
 using TeamManagementApp.Views.Types;
+using TeamManagementApp.Views.Users;
 
 namespace TeamManagementApp
 {
@@ -210,6 +211,12 @@ namespace TeamManagementApp
             frmProjects.Presenter.ProjectFormType = FormType.Edit;
             frmProjects.Presenter.CurrentProject.ProjectId = DgvProjects.DataSource[e.RowIndex].ProjectId;
             CreateOrOpenForm(frmProjects);
+        }
+
+        private void mnuConfigUsers_Click(object sender, EventArgs e)
+        {
+            var frmUsers = _viewFactory.Create<FrmUsers>();
+            CreateOrOpenForm(frmUsers);
         }
     }
 }

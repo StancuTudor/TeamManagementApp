@@ -62,7 +62,7 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<UserLogin>> GetAllUsers()
         {
-            var query = $@"select UserId, UserName from Logins order by UserName";
+            var query = $@"select UserId, Username from Logins order by Username";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<UserLogin>(query);

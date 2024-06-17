@@ -97,7 +97,7 @@ namespace TeamManagementApp.Views.Main
         {
             var serverConfig = _mainService.GetServerConfig();
 
-            _view.LblLoggedInUserText = $"Logged in as {_currentUserService.UserName}";
+            _view.LblLoggedInUserText = $"Logged in as {_currentUserService.Username}";
             _view.LblConnectedServerText = $"@ Connected to {serverConfig.Database} on {serverConfig.Server}";
             _view.LblAppVersionText = $"@ Version {Assembly.GetExecutingAssembly().GetName().Version}";
         }

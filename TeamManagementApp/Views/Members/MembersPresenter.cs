@@ -66,7 +66,7 @@ namespace TeamManagementApp.Views.Members
             {
                 new UserLogin()
                 {
-                    UserName = "(No user)",
+                    Username = "(No user)",
                     UserId = (long)Selection.Null
                 }
             };

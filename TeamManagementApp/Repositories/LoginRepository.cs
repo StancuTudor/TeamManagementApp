@@ -20,12 +20,12 @@ namespace TeamManagementApp.Repositories
 
         public async Task<UserLogin?> GetUserLogin(string user, string password)
         {
-            var query = @"select logins.UserId, UserName, Password, memberId from Logins
+            var query = @"select logins.UserId, Username, Password, memberId from Logins
                           left join Members on logins.UserId = Members.UserId 
-                          where UserName = @userName and (Password = @password or Password is null)";
+                          where Username = @username and (Password = @password or Password is null)";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
-                var result = await connection.QueryFirstOrDefaultAsync<UserLogin>(query, new { userName = user, password = password });
+                var result = await connection.QueryFirstOrDefaultAsync<UserLogin>(query, new { username = user, password = password });
                 return result;
             }
         }
