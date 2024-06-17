@@ -36,7 +36,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.Project),
                 HeaderText = "Project",
-                Width = 250,
+                Width = 320,
                 ReadOnly = true
             };
             _view.DgvProjects.AddColumn(projectNameColumn);
@@ -44,7 +44,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.Assignee),
                 HeaderText = "Assignee",
-                Width = 100,
+                Width = 120,
                 ReadOnly = true
             };
             _view.DgvProjects.AddColumn(assigneeColumn);
@@ -52,7 +52,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.Status),
                 HeaderText = "Status",
-                Width = 100,
+                Width = 120,
                 ReadOnly = true
             };
             _view.DgvProjects.AddColumn(statusColumn);
@@ -60,7 +60,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.Type),
                 HeaderText = "Type",
-                Width = 100,
+                Width = 120,
                 ReadOnly = true
             };
             _view.DgvProjects.AddColumn(typeColumn);
@@ -68,7 +68,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.StartDate),
                 HeaderText = "Start date",
-                Width = 100,
+                Width = 120,
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "dd.MM.yyyy" },
                 ReadOnly = true
             };
@@ -77,7 +77,7 @@ namespace TeamManagementApp.Views.Main
             {
                 DataPropertyName = nameof(DisplayedProject.EndDate),
                 HeaderText = "End date",
-                Width = 100,
+                Width = 120,
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "dd.MM.yyyy" },
                 ReadOnly = true
             };

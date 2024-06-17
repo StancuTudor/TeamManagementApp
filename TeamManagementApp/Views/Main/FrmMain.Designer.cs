@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             StripMainMenu = new MenuStrip();
             mnuAddProject = new ToolStripMenuItem();
@@ -139,7 +142,7 @@
             // mnuConfigUsers
             // 
             mnuConfigUsers.Name = "mnuConfigUsers";
-            mnuConfigUsers.Size = new Size(180, 22);
+            mnuConfigUsers.Size = new Size(157, 22);
             mnuConfigUsers.Text = "Configure users";
             mnuConfigUsers.Click += mnuConfigUsers_Click;
             // 
@@ -148,9 +151,34 @@
             dgvProjects.AllowUserToAddRows = false;
             dgvProjects.AllowUserToDeleteRows = false;
             dgvProjects.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvProjects.ColumnHeadersHeight = 28;
             dgvProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvProjects.DefaultCellStyle = dataGridViewCellStyle2;
             dgvProjects.Location = new Point(0, 72);
             dgvProjects.Name = "dgvProjects";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvProjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvProjects.Size = new Size(984, 558);
             dgvProjects.TabIndex = 1;
             dgvProjects.CellMouseDoubleClick += dgvProjects_CellMouseDoubleClick;
