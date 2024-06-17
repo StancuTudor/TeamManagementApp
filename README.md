@@ -5,6 +5,13 @@ TeamManagementApp is a C# application built with .NET 8 and Windows Forms.
 It provides a template for managing projects and team members. With features to manage project attributes, members, member classes, project types, and track project status. 
 Additionally, it includes a login system.
 
+Photos of the app
+
+![Login](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/6b004dc1-06ec-40ed-a4d1-ed4207aad055)
+![Main](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/3182a3c1-6f61-4b7b-bc48-c9b5b4475347)
+![Projects](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/e18412fd-fb6a-4d41-9bd2-c8ae950e8dd3)
+
+
 Installation
 To install and run TeamManagementApp:
 1. Clone the repository.
