@@ -9,13 +9,20 @@ Login form
 
 ![Login](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/6b004dc1-06ec-40ed-a4d1-ed4207aad055)
 
+
 Main menu - List of projects with filters
 
 ![Main](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/3182a3c1-6f61-4b7b-bc48-c9b5b4475347)
 
+
 Create project menu
 
 ![Projects](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/e18412fd-fb6a-4d41-9bd2-c8ae950e8dd3)
+
+
+DB diagram
+
+![TeamManagementApp_DB-Diagram](https://github.com/StancuTudor/TeamManagementApp/assets/92426222/761fb34d-bc44-4b4b-9d7d-8093441781f3)
 
 
 Installation
