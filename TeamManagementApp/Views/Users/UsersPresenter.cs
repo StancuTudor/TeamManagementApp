@@ -162,6 +162,7 @@ namespace TeamManagementApp.Views.Users
                 var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
                 if (validateResult == DialogResult.Yes)
                     await _usersService.ResetPasswordOfUser(selectedUser.UserId);
+                CustomMessageBox.ShowInfo("Password reset succesfully.");
             }
             catch(ValidationException ex)
             {
@@ -177,6 +178,8 @@ namespace TeamManagementApp.Views.Users
                 var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
                 if(validateResult == DialogResult.Yes)
                     await _usersService.DeleteUser(selectedUser.UserId);
+                CustomMessageBox.ShowInfo("User deleted succesfully.");
+                await InitializeControls();
             }
             catch (ValidationException ex)
             {
@@ -199,6 +202,8 @@ namespace TeamManagementApp.Views.Users
                     await _usersService.InsertNewUser(newUser);
                 else
                     await _usersService.UpdateUser(newUser);
+                CustomMessageBox.ShowInfo("User saved succesfully.");
+                await InitializeControls();
             }
             catch (ValidationException ex)
             {

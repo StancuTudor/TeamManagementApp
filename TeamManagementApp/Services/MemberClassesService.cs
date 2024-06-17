@@ -23,9 +23,9 @@ namespace TeamManagementApp.Services
             {
                 await _memberClassesRepository.DeleteMemberClassById(memberClassId);
             }
-            catch (Npgsql.PostgresException ex)
+            catch (Npgsql.PostgresException)
             {
-                throw new InvalidOperationException("Can't delete memberClass. It's being used in a project.");
+                throw new InvalidOperationException("Can't delete member class. It's being used by a member.");
             }
         }
 

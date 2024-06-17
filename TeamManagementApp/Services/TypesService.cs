@@ -23,7 +23,7 @@ namespace TeamManagementApp.Services
             {
                 await _typesRepository.DeleteTypeById(typeId);
             }
-            catch (Npgsql.PostgresException ex)
+            catch (Npgsql.PostgresException)
             {
                 throw new InvalidOperationException("Can't delete type. It's being used in a project.");
             }
