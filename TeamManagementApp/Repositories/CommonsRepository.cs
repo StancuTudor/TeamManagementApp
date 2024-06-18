@@ -38,7 +38,7 @@ namespace TeamManagementApp.Repositories
         }
         public async Task<List<ProjectStatus>> GetAllProjectStatuses()
         {
-            var query = $@"select StatusId, Status, Active from ProjectStatuses";
+            var query = $@"select StatusId, Status from ProjectStatuses";
             using (var connection = _sqlProvider.GetDbConnectionMain())
             {
                 var result = await connection.QueryAsync<ProjectStatus>(query);
