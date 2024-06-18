@@ -161,7 +161,7 @@ namespace TeamManagementApp.Views.Users
             try
             {
                 var selectedUser = GetSelectedUser();
-                var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to delete {selectedUser.Username}?");
+                var validateResult = CustomMessageBox.ShowQuestion($"Are you sure you want to reset password of {selectedUser.Username}?");
                 if (validateResult == DialogResult.Yes)
                     await _usersService.ResetPasswordOfUser(selectedUser.UserId);
                 CustomMessageBox.ShowInfo("Password reset succesfully.");
